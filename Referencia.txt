@@ -1,0 +1,6 @@
+Informe Semanal - Semanal
+Actas internas - cada reunion
+Actas externas - cada exposicion 
+Proceso de Gestion de proyectos -iterable (MINIMO 1)
+plan de proyecto - iterable (MINIMO 1)
+Ficha metrica gestion de proyecto por cada area de proceso - iterable (MINIMO 1)
