@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:messages id="messages" showDetail="true" autoUpdate="true"/>
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoPK_diaTrabajoFecha}" for="diaTrabajoPK_diaTrabajoFecha" />
+                    <pou:inputText disabled="true" id="diaTrabajoPK_diaTrabajoFecha" value="#{vistaAdminArea.selected.diaTrabajoPK.diaTrabajoFecha}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}" required="true" requiredMessage="#{bundle.EditDiaTrabajoRequiredMessage_diaTrabajoPK_diaTrabajoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoHoraRefrigerio}" for="diaTrabajoHoraRefrigerio" />
+                    <pou:inputText id="diaTrabajoHoraRefrigerio" value="#{vistaAdminArea.selected.diaTrabajoHoraRefrigerio}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoHoraRefrigerio}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoHoraIngresoReal}" for="diaTrabajoHoraIngresoReal" />
+                    <pou:inputText id="diaTrabajoHoraIngresoReal" value="#{vistaAdminArea.selected.diaTrabajoHoraIngresoReal}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoHoraIngresoReal}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idDiaTrabajoEstado}" for="idDiaTrabajoEstado" />
+                    <pou:selectOneMenu id="idDiaTrabajoEstado" value="#{vistaAdminArea.selected.idDiaTrabajoEstado}" title="#{bundle.EditDiaTrabajoTitle_idDiaTrabajoEstado}" >
+                        <f:selectItems value="#{diaTrabajoEstadoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idCausaIncidencia}" for="idCausaIncidencia" />
+                    <pou:selectOneMenu id="idCausaIncidencia" value="#{vistaAdminArea.selected.idCausaIncidencia}" title="#{bundle.EditDiaTrabajoTitle_idCausaIncidencia}" >
+                        <f:selectItems value="#{causaIncidenciaController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{vistaAdminArea.selected.idHoraIngreso}" title="#{bundle.EditDiaTrabajoTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>                
+                <pou:commandButton ajax="false" action="#{vistaAdminArea.update}" value="#{bundle.EditDiaTrabajoSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditDiaTrabajoViewLink}" immediate="true"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" value="Ir a Vista de Administrador" action="vistaAdminArea" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

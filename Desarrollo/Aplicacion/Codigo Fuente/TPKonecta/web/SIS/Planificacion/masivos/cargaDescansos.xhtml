@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            Carga Masiva de Descansos
+        </ui:define>
+        <ui:define name="body">
+            <h:form enctype="multipart/form-data">
+                <h:panelGroup id="messagePanel" layout="block" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <pou:growl id="growl" />
+                    <pou:panel header="Seleccione la fichero XLS" > 
+                        <pou:fileUpload value="#{cargaMasivaPersonal.archivo}" mode="simple"/>  
+                    </pou:panel>
+                </h:panelGroup>
+                <br />
+                <br />
+                <pou:panel  header="Accione en orden secuencial" style="width: 90%;margin-left: auto; margin-right: auto" >
+                    <pou:panelGrid columns="4"> 
+                        <pou:commandButton value="1. Verificar sintaxis" ajax="false" actionListener="#{cargaMasivaPersonal.cargar()}"/>  
+                        <pou:commandButton value="2. Comprobar DNIs " ajax="false" actionListener="#{cargaMasivaPersonal.cargar()}"/>  
+                        <pou:commandButton value="3. Comprobar Relaciones" ajax="false" actionListener="#{cargaMasivaPersonal.cargar()}"/>  
+                        <pou:commandButton value="4. Cargar" ajax="false" actionListener="#{cargaMasivaPersonal.cargar()}"/>  
+                    </pou:panelGrid>
+                </pou:panel>
+                <br />
+                <br />
+                <h:panelGroup  layout="block" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="Log de Errores:" />
+                    <h:outputText value="#{cargaMasivaPersonal.log_de_errores}" />
+                </h:panelGroup>
+                <br />
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

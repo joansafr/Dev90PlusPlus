@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPersonalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idPersonal}" for="idPersonal" />
+                    <pou:inputText id="idPersonal" value="#{personalController.selected.idPersonal}" title="#{bundle.EditPersonalTitle_idPersonal}" required="true" requiredMessage="#{bundle.EditPersonalRequiredMessage_idPersonal}"/>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalCodigoPlanilla}" for="personalCodigoPlanilla" />
+                    <pou:inputText id="personalCodigoPlanilla" value="#{personalController.selected.personalCodigoPlanilla}" title="#{bundle.EditPersonalTitle_personalCodigoPlanilla}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalCodigoFotocheck}" for="personalCodigoFotocheck" />
+                    <pou:inputText id="personalCodigoFotocheck" value="#{personalController.selected.personalCodigoFotocheck}" title="#{bundle.EditPersonalTitle_personalCodigoFotocheck}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalNombre}" for="personalNombre" />
+                    <pou:inputText id="personalNombre" value="#{personalController.selected.personalNombre}" title="#{bundle.EditPersonalTitle_personalNombre}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalApellidoPaterno}" for="personalApellidoPaterno" />
+                    <pou:inputText id="personalApellidoPaterno" value="#{personalController.selected.personalApellidoPaterno}" title="#{bundle.EditPersonalTitle_personalApellidoPaterno}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalApellidoMaterno}" for="personalApellidoMaterno" />
+                    <pou:inputText id="personalApellidoMaterno" value="#{personalController.selected.personalApellidoMaterno}" title="#{bundle.EditPersonalTitle_personalApellidoMaterno}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalUsuario}" for="personalUsuario" />
+                    <pou:inputText id="personalUsuario" value="#{personalController.selected.personalUsuario}" title="#{bundle.EditPersonalTitle_personalUsuario}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalContrasena}" for="personalContrasena" />
+                    <pou:inputText id="personalContrasena" value="#{personalController.selected.personalContrasena}" title="#{bundle.EditPersonalTitle_personalContrasena}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalCantidadHorasSemanal}" for="personalCantidadHorasSemanal" />
+                    <pou:inputText id="personalCantidadHorasSemanal" value="#{personalController.selected.personalCantidadHorasSemanal}" title="#{bundle.EditPersonalTitle_personalCantidadHorasSemanal}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalConfianza}" for="personalConfianza" />
+                    <pou:inputText id="personalConfianza" value="#{personalController.selected.personalConfianza}" title="#{bundle.EditPersonalTitle_personalConfianza}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaIncorporacion}" for="personalFechaIncorporacion" />
+                    <pou:inputText id="personalFechaIncorporacion" value="#{personalController.selected.personalFechaIncorporacion}" title="#{bundle.EditPersonalTitle_personalFechaIncorporacion}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalActividad}" for="personalActividad" />
+                    <pou:inputText id="personalActividad" value="#{personalController.selected.personalActividad}" title="#{bundle.EditPersonalTitle_personalActividad}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaBaja}" for="personalFechaBaja" />
+                    <pou:inputText id="personalFechaBaja" value="#{personalController.selected.personalFechaBaja}" title="#{bundle.EditPersonalTitle_personalFechaBaja}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaFormacion}" for="personalFechaFormacion" />
+                    <pou:inputText id="personalFechaFormacion" value="#{personalController.selected.personalFechaFormacion}" title="#{bundle.EditPersonalTitle_personalFechaFormacion}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaIngresoGestion}" for="personalFechaIngresoGestion" />
+                    <pou:inputText id="personalFechaIngresoGestion" value="#{personalController.selected.personalFechaIngresoGestion}" title="#{bundle.EditPersonalTitle_personalFechaIngresoGestion}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaNacimiento}" for="personalFechaNacimiento" />
+                    <pou:inputText id="personalFechaNacimiento" value="#{personalController.selected.personalFechaNacimiento}" title="#{bundle.EditPersonalTitle_personalFechaNacimiento}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalSexo}" for="personalSexo" />
+                    <pou:inputText id="personalSexo" value="#{personalController.selected.personalSexo}" title="#{bundle.EditPersonalTitle_personalSexo}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalCantidadHijos}" for="personalCantidadHijos" />
+                    <pou:inputText id="personalCantidadHijos" value="#{personalController.selected.personalCantidadHijos}" title="#{bundle.EditPersonalTitle_personalCantidadHijos}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalDireccion}" for="personalDireccion" />
+                    <pou:inputText id="personalDireccion" value="#{personalController.selected.personalDireccion}" title="#{bundle.EditPersonalTitle_personalDireccion}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalDireccionReferencia}" for="personalDireccionReferencia" />
+                    <pou:inputText id="personalDireccionReferencia" value="#{personalController.selected.personalDireccionReferencia}" title="#{bundle.EditPersonalTitle_personalDireccionReferencia}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalTelefonoFijo}" for="personalTelefonoFijo" />
+                    <pou:inputText id="personalTelefonoFijo" value="#{personalController.selected.personalTelefonoFijo}" title="#{bundle.EditPersonalTitle_personalTelefonoFijo}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalTelefonoMovil}" for="personalTelefonoMovil" />
+                    <pou:inputText id="personalTelefonoMovil" value="#{personalController.selected.personalTelefonoMovil}" title="#{bundle.EditPersonalTitle_personalTelefonoMovil}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalEmail}" for="personalEmail" />
+                    <pou:inputText id="personalEmail" value="#{personalController.selected.personalEmail}" title="#{bundle.EditPersonalTitle_personalEmail}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalHoraRefrigerioInicio}" for="personalHoraRefrigerioInicio" />
+                    <pou:inputText id="personalHoraRefrigerioInicio" value="#{personalController.selected.personalHoraRefrigerioInicio}" title="#{bundle.EditPersonalTitle_personalHoraRefrigerioInicio}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalHoraRefrigerioDuracion}" for="personalHoraRefrigerioDuracion" />
+                    <pou:inputText id="personalHoraRefrigerioDuracion" value="#{personalController.selected.personalHoraRefrigerioDuracion}" title="#{bundle.EditPersonalTitle_personalHoraRefrigerioDuracion}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalLatitude}" for="personalLatitude" />
+                    <pou:inputText id="personalLatitude" value="#{personalController.selected.personalLatitude}" title="#{bundle.EditPersonalTitle_personalLatitude}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalLongitude}" for="personalLongitude" />
+                    <pou:inputText id="personalLongitude" value="#{personalController.selected.personalLongitude}" title="#{bundle.EditPersonalTitle_personalLongitude}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalContrato}" for="personalContrato" />
+                    <pou:inputTextarea rows="4" cols="30" id="personalContrato" value="#{personalController.selected.personalContrato}" title="#{bundle.EditPersonalTitle_personalContrato}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalCantidadDiasSemanal}" for="personalCantidadDiasSemanal" />
+                    <pou:inputText id="personalCantidadDiasSemanal" value="#{personalController.selected.personalCantidadDiasSemanal}" title="#{bundle.EditPersonalTitle_personalCantidadDiasSemanal}" />
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_personalFechaVencimientoContrato}" for="personalFechaVencimientoContrato" />
+                    <pou:inputText id="personalFechaVencimientoContrato" value="#{personalController.selected.personalFechaVencimientoContrato}" title="#{bundle.EditPersonalTitle_personalFechaVencimientoContrato}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idResponsable}" for="idResponsable" />
+                    <pou:selectOneMenu id="idResponsable" value="#{personalController.selected.idResponsable}" title="#{bundle.EditPersonalTitle_idResponsable}" >
+                        <f:selectItems value="#{responsableController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idCentroEstudios}" for="idCentroEstudios" />
+                    <pou:selectOneMenu id="idCentroEstudios" value="#{personalController.selected.idCentroEstudios}" title="#{bundle.EditPersonalTitle_idCentroEstudios}" >
+                        <f:selectItems value="#{centroEstudiosController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idCarrera}" for="idCarrera" />
+                    <pou:selectOneMenu id="idCarrera" value="#{personalController.selected.idCarrera}" title="#{bundle.EditPersonalTitle_idCarrera}" >
+                        <f:selectItems value="#{carreraController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idNivelEducativo}" for="idNivelEducativo" />
+                    <pou:selectOneMenu id="idNivelEducativo" value="#{personalController.selected.idNivelEducativo}" title="#{bundle.EditPersonalTitle_idNivelEducativo}" >
+                        <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idEstadoCivil}" for="idEstadoCivil" />
+                    <pou:selectOneMenu id="idEstadoCivil" value="#{personalController.selected.idEstadoCivil}" title="#{bundle.EditPersonalTitle_idEstadoCivil}" >
+                        <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idGrupoFormacion}" for="idGrupoFormacion" />
+                    <pou:selectOneMenu id="idGrupoFormacion" value="#{personalController.selected.idGrupoFormacion}" title="#{bundle.EditPersonalTitle_idGrupoFormacion}" >
+                        <f:selectItems value="#{grupoFormacionController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idMotivoBaja}" for="idMotivoBaja" />
+                    <pou:selectOneMenu id="idMotivoBaja" value="#{personalController.selected.idMotivoBaja}" title="#{bundle.EditPersonalTitle_idMotivoBaja}" >
+                        <f:selectItems value="#{motivoBajaController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idCargo}" for="idCargo" />
+                    <pou:selectOneMenu id="idCargo" value="#{personalController.selected.idCargo}" title="#{bundle.EditPersonalTitle_idCargo}" >
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{personalController.selected.idHoraIngreso}" title="#{bundle.EditPersonalTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idSector}" for="idSector" />
+                    <pou:selectOneMenu id="idSector" value="#{personalController.selected.idSector}" title="#{bundle.EditPersonalTitle_idSector}" >
+                        <f:selectItems value="#{sectorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonalLabel_idDepartamento}" for="idDepartamento" />
+                    <pou:selectOneMenu id="idDepartamento" value="#{personalController.selected.idDepartamento}" title="#{bundle.EditPersonalTitle_idDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{personalController.update}" value="#{bundle.EditPersonalSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditPersonalViewLink}" immediate="true"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareList}" value="#{bundle.EditPersonalShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

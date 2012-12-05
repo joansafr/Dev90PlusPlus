@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="title">
+                K-Planificacion - Reporte
+            </ui:define>
+
+            <ui:define name="top">
+            </ui:define>
+
+            <ui:define name="body">
+                <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                    <f:facet name="start">  
+                        <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                    </f:facet>  
+
+                    <f:facet name="complete">  
+                        <h:outputText value="" />  
+                    </f:facet>  
+                </pou:ajaxStatus> 
+                <h:form>
+                    <!--Mensajes de Error -->
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <pou:growl id="growl" />
+                    </h:panelGroup>
+                    <!--Mensajes de Error -->
+                    
+                    <!--Parametros -->
+                    <pou:panel header="Selecione:" style="width: 95%; margin-left: auto; margin-right: auto">
+                        <pou:panelGrid columns="9">  
+                            <h:outputText value="Fecha Inicio:" />
+                            <pou:calendar value="#{reportePlanificacion.fechaInicio}"  id="popupCal" pattern="yyyy-MM-dd" /><h:outputText value="Fecha Fin:" /><pou:calendar value="#{reportePlanificacion.fechaFin}"  id="popupCal2" pattern="yyyy-MM-dd" />
+                            <h:outputText value="Edad Minima:" /><pou:spinner value="#{reportePlanificacion.edadMinima}"/><h:outputText value="Edad Maxima" /><pou:spinner value="#{reportePlanificacion.edadMaxima}"/>
+                            <pou:commandButton value="Listar"  update="@form" actionListener="#{reportePlanificacion.CantidadBajas_EdadDepartamento()}" />
+                        </pou:panelGrid>
+                    </pou:panel>
+                    <!--Parametros -->
+                    
+                    <!--Tabla -->
+                    <br />
+                    <br />
+                    <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{reportePlanificacion.DMReporte.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{reportePlanificacion.DMReporte.rowCount > 0}">
+                        <pou:dataTable id="tableId" value="#{reportePlanificacion.DMReporte}"  var="item" style="width: 95%; margin-left: auto; margin-right: auto"
+                                       widgetVar="diaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                       scrollHeight="380" >
+                            <f:facet name="header">  
+                                Cantidad de Bajas Por Edad Segun Departamento 
+                            </f:facet> 
+                            <pou:column  headerText="Departamento" sortBy="#{item[0]}">
+                                <h:outputText value="#{item[0]}" />
+                            </pou:column>
+                            <pou:column headerText="De #{reportePlanificacion.edadMinima} A #{reportePlanificacion.edadMaxima} Años" sortBy="#{item[1]}" >
+                                <h:outputText value="#{item[1]}"/>
+                            </pou:column>
+                            <pou:column headerText="% de Rango" sortBy="#{item[2]}" >
+                                <h:outputText value="#{item[2]}"/>
+                            </pou:column>
+                        </pou:dataTable>
+                        <br />
+                        <br />
+                        <pou:commandButton style="margin-left: 2%;" value="Exportar a Excel" ajax="false">
+                            <pou:dataExporter type="xls" target="tableId" fileName="Planificacion_DownloadXLS"/>
+                        </pou:commandButton>
+                       
+                    </h:panelGroup>
+                     <pou:commandButton style=" margin-left: 2%" value="Regresar" action="index" ajax="false"/>
+                    <!--Tabla -->  
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

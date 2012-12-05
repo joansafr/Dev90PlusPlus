@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var docked = 0;
+            
+                $("#dock li ul").height($(window).height());
+            
+                $("#dock .dock").click(function(){
+                    $(this).parent().parent().addClass("docked").removeClass("free");
+                
+                    docked += 1;
+                    var dockH = ($(window).height()) / docked
+                    var dockT = 0;               
+                
+                    $("#dock li ul.docked").each(function(){
+                        $(this).height(dockH).css("top", dockT + "px");
+                        dockT += dockH;
+                    });
+                    $(this).parent().find(".undock").show();
+                    $(this).hide();
+                
+                    if (docked > 0)
+                        $("#content").css("margin-left","250px");
+                    else
+                        $("#content").css("margin-left", "60px");
+                });
+            
+                $("#dock .undock").click(function(){
+                    $(this).parent().parent().addClass("free").removeClass("docked")
+                    .animate({left:"-180px"}, 200).height($(window).height()).css("top", "0px");
+                
+                    docked = docked - 1;
+                    var dockH = ($(window).height()) / docked
+                    var dockT = 0;               
+                
+                    $("#dock li ul.docked").each(function(){
+                        $(this).height(dockH).css("top", dockT + "px");
+                        dockT += dockH;
+                    });
+                    $(this).parent().find(".dock").show();
+                    $(this).hide();
+                
+                    if (docked > 0)
+                        $("#content").css("margin-left", "250px");
+                    else
+                        $("#content").css("margin-left", "60px");
+                });
+
+                $("#dock li").hover(function(){
+                    $(this).find("ul").animate({left:"40px"}, 200);
+                }, function(){
+                    $(this).find("ul.free").animate({left:"-180px"}, 200);
+                });
+            }); 
+        </script>
+        <ul id="dock">
+            <li id="diario">
+                <ul class="free">
+                    <li class="header">Antes de enviar al Proveedor</li>                      
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/generarDiaTrabajo/diaTrabajoIndex.xhtml" >Generar: D&iacute;a de Trabajo</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/generarTransporte/AutomaticoIndex.xhtml" >Generar: Transporte</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/asignarProveedor/asignarProveedorIndex.xhtml" >Asociar: Proveedor</a></li>
+                    <li class="header">Despues de enviar al Proveedor</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/validacionMovilidad/validacionMovilidadIndex.xhtml" >Validar: D&iacute;a de Trabajo</a></li>
+                </ul>
+            </li>
+            <li id="proveedores">
+                <ul class="free">
+                    <li class="header">Proveedores</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/proveedores/Transportar_DiaProveedor.xhtml">A Transportar</a></li>
+                </ul>
+            </li>
+            <li id="revision">
+                <ul class="free">
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/revisionDiaTrabajo/List.xhtml" >Revision: D&iacute;a de Trabajo</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/revisionDiaTransporte/List.xhtml" >Revision: Transporte</a></li>
+                </ul>
+            </li>
+            <li id="reportes">
+                <ul class="free">
+                    <li class="header" >Estado de Dias de Trabajo</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/estado/index.xhtml">Ir a Reportes de Estados de Dias de Trabajo</a></li>
+                    <li class="header" >Transportados</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/transportados/index.xhtml">Ir a Reportes de Agentes Tranpostados</a></li>
+                    <li class="header" >No Atendidos</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/noatendidos/index.xhtml">Ir a Reportes de Agentes no Atendidos</a></li>
+                    <li class="header" >Incidentes</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/incidentes/index.xhtml">Ir a Reportes de Incidentes</a></li>
+                    <li class="header" >Tardanzas</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/tardanzas/index.xhtml">Ir a Reportes de Tardanzas</a></li>
+                    <li class="header" >Facturacion</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/facturacion/index.xhtml">Ir a Reportes de Facturacion</a></li>
+                    <li class="header" >Ranking</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/reporte/ranking/index.xhtml">Ir a Reportes de Ranking</a></li>
+                </ul>
+            </li>
+            <li id="configuracion">
+                <ul class="free">
+                    <li class="header">Ubicacion</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/cono/List.xhtml" >Conos</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/distrito/List.xhtml" >Distritos</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/sector/List.xhtml" >Sectores</a></li>
+                    <li class="header">Sistema</li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/causaDemora/List.xhtml" >Causa de Demora</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/causaIncidencia/List.xhtml" >Cauda de Incidencia</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/padron/List.xhtml" >Padron</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/proveedor/List.xhtml" >Proveedor</a></li>			
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/tiempoDemora/List.xhtml" >Tiempo de Demora</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Transporte/mantenimiento/tipoVehiculo/List.xhtml" >Tipo de Vehiculo</a></li>
+                </ul>
+            </li>
+        </ul>
+    </cc:implementation>
+</html>

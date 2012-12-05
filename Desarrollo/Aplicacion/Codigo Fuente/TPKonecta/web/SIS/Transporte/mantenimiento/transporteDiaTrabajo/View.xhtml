@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTransporteDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoCantidadPersonas}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCantidadPersonas}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoCantidadPersonas}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoPlaca}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoPlaca}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoPlaca}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idTransporteDiaTrabajo}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoObservaciones}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoObservaciones}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoObservaciones}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoFecha}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoFecha}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoCostoTotal}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCostoTotal}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoTotal}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_transporteDiaTrabajoCostoPorPersona}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCostoPorPersona}" title="#{bundle.ViewTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoPorPersona}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idTiempoDemora}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idTiempoDemora}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idTiempoDemora}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idProveedor}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idProveedor}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idProveedor}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idHoraIngreso}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idHoraIngreso}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idHoraIngreso}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idSector}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idSector}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idPadron}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idPadron}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idPadron}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idTipoVehiculo}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idTipoVehiculo}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idTipoVehiculo}"/>
+                    <h:outputText value="#{bundle.ViewTransporteDiaTrabajoLabel_idCausaDemora}"/>
+                    <h:outputText value="#{transporteDiaTrabajoController.selected.idCausaDemora}" title="#{bundle.ViewTransporteDiaTrabajoTitle_idCausaDemora}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.destroyAndView}" value="#{bundle.ViewTransporteDiaTrabajoDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewTransporteDiaTrabajoEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareCreate}" value="#{bundle.ViewTransporteDiaTrabajoCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareList}" value="#{bundle.ViewTransporteDiaTrabajoShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

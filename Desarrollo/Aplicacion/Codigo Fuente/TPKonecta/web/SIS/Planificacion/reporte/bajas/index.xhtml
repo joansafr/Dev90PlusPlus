@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="title">
+                K-Planificacion - Listado de Reportes
+            </ui:define>
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <pou:panelGrid style="width: 100% ;margin-left: auto; margin-right: auto " >
+                        <f:facet name="header">
+                            <pou:row>  
+                                <pou:column colspan="12">Cantidad de Bajas</pou:column>  
+                            </pou:row>
+                        </f:facet>
+                        <pou:row>   
+                            <pou:column colspan="3" style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_Departamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column  colspan="3" style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3" style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_Servicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3" style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_Segmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3" style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3" style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_Campana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Campaña" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3" style="width: 20%">Descripcion</pou:column> 
+                        </pou:row>  
+                    </pou:panelGrid>
+                    <pou:separator style="width:100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width:100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3" style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_CondicionLaboralDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Condicion Laboral Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_CondicionLaboralServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Condicion Laboral Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_CondicionLaboralSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Condicion Laboral Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column>  
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_CondicionLaboralCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Condicion Laboral Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_TurnoDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Turno Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_TurnoServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_TurnoSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_TurnoCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%; height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_PermanenciaDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Permanencia Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_PermanenciaServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Permanencia Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_PermanenciaSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Permanencia Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column>
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_PermanenciaCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Permanencia Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width:100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_MotivoDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Motivo Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_MotivoServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Motivo Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_MotivoSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Motivo Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_MotivoCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Motivo Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width:100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_SexoDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Sexo Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_SexoServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sexo Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_SexoSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sexo Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_SexoCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sexo Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EdadDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Rando de Edad Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EdadServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Rando de Edad Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EdadSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Rando de Edad Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EdadCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Rando de Edad Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EstadoCivilDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Estado Civil Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EstadoCivilServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Estado Civil Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EstadoCivilSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Estado Civil Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_EstadoCivilCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Estado Civil Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_NivelEducativoDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Nivel Educativo Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_NivelEducativoServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Nivel Educativo Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_NivelEducativoSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Nivel Educativo Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_NivelEducativoCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Nivel Educativo Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_GrupoFormacionDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Grupo de Formacion Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_GrupoFormacionServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Grupo de Formacion Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_GrupoFormacionSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Grupo de Formacion Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_GrupoFormacionCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Grupo de Formacion Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width: 100%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 100%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_ResponsableDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Responsable Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_ResponsableServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Responsable Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_ResponsableSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Responsable Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                            <pou:column colspan="3"  style="width: 18%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadBajas_ResponsableCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Responsable Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column colspan="3"  style="width: 20%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

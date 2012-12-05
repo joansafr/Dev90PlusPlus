@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPersonalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idPersonal}"/>
+                    <h:outputText value="#{personalController.selected.idPersonal}" title="#{bundle.ViewPersonalTitle_idPersonal}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalCodigoPlanilla}"/>
+                    <h:outputText value="#{personalController.selected.personalCodigoPlanilla}" title="#{bundle.ViewPersonalTitle_personalCodigoPlanilla}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalCodigoFotocheck}"/>
+                    <h:outputText value="#{personalController.selected.personalCodigoFotocheck}" title="#{bundle.ViewPersonalTitle_personalCodigoFotocheck}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalNombre}"/>
+                    <h:outputText value="#{personalController.selected.personalNombre}" title="#{bundle.ViewPersonalTitle_personalNombre}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalApellidoPaterno}"/>
+                    <h:outputText value="#{personalController.selected.personalApellidoPaterno}" title="#{bundle.ViewPersonalTitle_personalApellidoPaterno}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalApellidoMaterno}"/>
+                    <h:outputText value="#{personalController.selected.personalApellidoMaterno}" title="#{bundle.ViewPersonalTitle_personalApellidoMaterno}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalUsuario}"/>
+                    <h:outputText value="#{personalController.selected.personalUsuario}" title="#{bundle.ViewPersonalTitle_personalUsuario}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalContrasena}"/>
+                    <h:outputText value="#{personalController.selected.personalContrasena}" title="#{bundle.ViewPersonalTitle_personalContrasena}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalCantidadHorasSemanal}"/>
+                    <h:outputText value="#{personalController.selected.personalCantidadHorasSemanal}" title="#{bundle.ViewPersonalTitle_personalCantidadHorasSemanal}">
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalConfianza}"/>
+                    <h:outputText value="Si" rendered="#{personalController.selected.personalConfianza == true}" title="#{bundle.ViewPersonalTitle_personalConfianza}" /><h:outputText value="No" rendered="#{personalController.selected.personalConfianza == false}" title="#{bundle.ViewPersonalTitle_personalConfianza}" />
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaIncorporacion}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaIncorporacion}" title="#{bundle.ViewPersonalTitle_personalFechaIncorporacion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalActividad}"/>
+                    <h:outputText value="Si" rendered="#{personalController.selected.personalActividad == true}" title="#{bundle.ViewPersonalTitle_personalActividad}" /><h:outputText value="No" rendered="#{personalController.selected.personalActividad == false}" title="#{bundle.ViewPersonalTitle_personalActividad}" />
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaBaja}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaBaja}" title="#{bundle.ViewPersonalTitle_personalFechaBaja}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaFormacion}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaFormacion}" title="#{bundle.ViewPersonalTitle_personalFechaFormacion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaIngresoGestion}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaIngresoGestion}" title="#{bundle.ViewPersonalTitle_personalFechaIngresoGestion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaNacimiento}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaNacimiento}" title="#{bundle.ViewPersonalTitle_personalFechaNacimiento}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalCantidadHijos}"/>
+                    <h:outputText value="#{personalController.selected.personalCantidadHijos}" title="#{bundle.ViewPersonalTitle_personalCantidadHijos}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalDireccion}"/>
+                    <h:outputText value="#{personalController.selected.personalDireccion}" title="#{bundle.ViewPersonalTitle_personalDireccion}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalDireccionReferencia}"/>
+                    <h:outputText value="#{personalController.selected.personalDireccionReferencia}" title="#{bundle.ViewPersonalTitle_personalDireccionReferencia}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalTelefonoFijo}"/>
+                    <h:outputText value="#{personalController.selected.personalTelefonoFijo}" title="#{bundle.ViewPersonalTitle_personalTelefonoFijo}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalTelefonoMovil}"/>
+                    <h:outputText value="#{personalController.selected.personalTelefonoMovil}" title="#{bundle.ViewPersonalTitle_personalTelefonoMovil}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalEmail}"/>
+                    <h:outputText value="#{personalController.selected.personalEmail}" title="#{bundle.ViewPersonalTitle_personalEmail}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalHoraRefrigerioInicio}"/>
+                    <h:outputText value="#{personalController.selected.personalHoraRefrigerioInicio}" title="#{bundle.ViewPersonalTitle_personalHoraRefrigerioInicio}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalHoraRefrigerioDuracion}"/>
+                    <h:outputText value="#{personalController.selected.personalHoraRefrigerioDuracion}" title="#{bundle.ViewPersonalTitle_personalHoraRefrigerioDuracion}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalCantidadDiasSemanal}"/>
+                    <h:outputText value="#{personalController.selected.personalCantidadDiasSemanal}" title="#{bundle.ViewPersonalTitle_personalCantidadDiasSemanal}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalFechaVencimientoContrato}"/>
+                    <h:outputText value="#{personalController.selected.personalFechaVencimientoContrato}" title="#{bundle.ViewPersonalTitle_personalFechaVencimientoContrato}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idResponsable}"/>
+                    <h:outputText value="#{personalController.selected.idResponsable.responsableNombreApellido}" title="#{bundle.ViewPersonalTitle_idResponsable}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idCentroEstudios}"/>
+                    <h:outputText value="#{personalController.selected.idCentroEstudios.centroEstudiosNombre}" title="#{bundle.ViewPersonalTitle_idCentroEstudios}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idCarrera}"/>
+                    <h:outputText value="#{personalController.selected.idCarrera.carreraNombre}" title="#{bundle.ViewPersonalTitle_idCarrera}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idNivelEducativo}"/>
+                    <h:outputText value="#{personalController.selected.idNivelEducativo.nivelEducativoNombre}" title="#{bundle.ViewPersonalTitle_idNivelEducativo}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idEstadoCivil}"/>
+                    <h:outputText value="#{personalController.selected.idEstadoCivil.estadoCivilNombre}" title="#{bundle.ViewPersonalTitle_idEstadoCivil}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idGrupoFormacion}"/>
+                    <h:outputText value="#{personalController.selected.idGrupoFormacion.grupoFormacionNombre}" title="#{bundle.ViewPersonalTitle_idGrupoFormacion}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idMotivoBaja}"/>
+                    <h:outputText value="#{personalController.selected.idMotivoBaja}" title="#{bundle.ViewPersonalTitle_idMotivoBaja}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idCargo}"/>
+                    <h:outputText value="#{personalController.selected.idCargo.cargoNombre}" title="#{bundle.ViewPersonalTitle_idCargo}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idHoraIngreso}"/>
+                    <h:outputText value="#{personalController.selected.idHoraIngreso}" title="#{bundle.ViewPersonalTitle_idHoraIngreso}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idSector}"/>
+                    <h:outputText value="#{personalController.selected.idSector.sectorNombre}" title="#{bundle.ViewPersonalTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_idDepartamento}"/>
+                    <h:outputText value="#{personalController.selected.idDepartamento.departamentoNombre}" title="#{bundle.ViewPersonalTitle_idDepartamento}"/>
+                    <h:outputText value="#{bundle.ViewPersonalLabel_personalSexo}"/>
+                    <h:outputText value="Varon" rendered="#{personalController.selected.personalSexo == true}" title="#{bundle.ViewPersonalTitle_personalSexo}" /><h:outputText value="Mujer" rendered="#{personalController.selected.personalSexo == false}" title="#{bundle.ViewPersonalTitle_personalSexo}" />
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.destroyAndView}" value="#{bundle.ViewPersonalDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewPersonalEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareCreate}" value="#{bundle.ViewPersonalCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareList}" value="#{bundle.ViewPersonalShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

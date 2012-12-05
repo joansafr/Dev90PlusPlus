@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var docked = 0;
+            
+                $("#dock li ul").height($(window).height());
+            
+                $("#dock .dock").click(function(){
+                    $(this).parent().parent().addClass("docked").removeClass("free");
+                
+                    docked += 1;
+                    var dockH = ($(window).height()) / docked
+                    var dockT = 0;               
+                
+                    $("#dock li ul.docked").each(function(){
+                        $(this).height(dockH).css("top", dockT + "px");
+                        dockT += dockH;
+                    });
+                    $(this).parent().find(".undock").show();
+                    $(this).hide();
+                
+                    if (docked > 0)
+                        $("#content").css("margin-left","250px");
+                    else
+                        $("#content").css("margin-left", "60px");
+                });
+            
+                $("#dock .undock").click(function(){
+                    $(this).parent().parent().addClass("free").removeClass("docked")
+                    .animate({left:"-180px"}, 200).height($(window).height()).css("top", "0px");
+                
+                    docked = docked - 1;
+                    var dockH = ($(window).height()) / docked
+                    var dockT = 0;               
+                
+                    $("#dock li ul.docked").each(function(){
+                        $(this).height(dockH).css("top", dockT + "px");
+                        dockT += dockH;
+                    });
+                    $(this).parent().find(".dock").show();
+                    $(this).hide();
+                
+                    if (docked > 0)
+                        $("#content").css("margin-left", "250px");
+                    else
+                        $("#content").css("margin-left", "60px");
+                });
+
+                $("#dock li").hover(function(){
+                    $(this).find("ul").animate({left:"40px"}, 200);
+                }, function(){
+                    $(this).find("ul.free").animate({left:"-180px"}, 200);
+                });
+            }); 
+        </script>
+        <ul id="dock">
+            <li id="vistas">
+                <ul class="free">
+                    <li class="header">Vistas</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/vistaAdminArea/vistaAdminArea.xhtml" >Vista: Admin</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/vistaUsuarioArea/vistaUsuarioArea.xhtml" >Vista: Usuario</a></li>
+                </ul>
+            </li>
+            <li id="masivos">
+                <ul class="free">
+                    <li class="header">Cargas</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/masivos/cargaPersonal.xhtml">Personal</a></li>
+                    <!--
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/masivos/cargaDescansos.xhtml">Descansos</a></li>
+                    -->
+                    <li class="header">Generacion</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/masivos/generacionDescansos.xhtml">Descansos</a></li>
+                   
+                </ul>
+            </li>
+            <li id="revision">
+                <ul class="free">
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/revisionPersonal/List.xhtml" >Revision: Personal</a></li>
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/personalDiaDescanso/List.xhtml" >Revision: Descansos</a></li>   
+                </ul>
+            </li>
+            <li id="reportes">
+                <ul class="free">
+                    <li class="header" >Agentes</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/reporte/agentes/index.xhtml">Ir a Reportes de Agentes</a></li>
+                    <li class="header" >Bajas</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/reporte/bajas/index.xhtml">Ir a Reportes de Bajas</a></li>
+                    <li class="header" >Descansos</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/reporte/descansos/index.xhtml">Ir a Reportes de Incidentes</a></li>
+                    <li class="header" >Rotacion</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/reporte/rotacion/index.xhtml">Ir a Reportes de Rotacion</a></li>
+                </ul>
+            </li>
+            <li id="configuracion">
+                <ul class="free">
+                    <li class="header">Jerarquia</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/campana/List.xhtml" >Campana</a></li>	
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/segmento/List.xhtml" >Segmento</a></li>			
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/servicio/List.xhtml" >Servicio</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/departamento/List.xhtml" >Departamentos</a></li>
+                    <li class="header">Usuario</li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/cargo/List.xhtml" >Cargo</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/carrera/List.xhtml" >Carrera</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/centroEstudios/List.xhtml" >Centros de Estudios</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/estadoCivil/List.xhtml" >Estado Civil</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/grupoFormacion/List.xhtml" >Grupo de Formacion</a></li>	
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/horaIngreso/List.xhtml" >Hora de Ingreso</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/motivoBaja/List.xhtml" >Motivo de Baja</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/nivelEducativo/List.xhtml" >Nivel Educativo</a></li>
+                    <li><a href="/TPKonecta/faces/SIS/Planificacion/mantenimiento/responsable/List.xhtml" >Responsables</a></li>
+                </ul>
+            </li>
+        </ul>
+    </cc:implementation>
+</html>

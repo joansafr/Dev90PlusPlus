@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSectorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSectorEmpty}" rendered="#{sectorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sectorController.items.rowCount > 0}">
+                    <pou:dataTable value="#{sectorController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSectorTitle_idSector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSector}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSectorTitle_sectorNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSectorTitle_sectorCosto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sectorCosto}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSectorTitle_idDistrito}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDistrito.distritoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSectorTitle_idCono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCono.conoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="Vehiculo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoVehiculo.tipoVehiculoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{sectorController.prepareView}" value="#{bundle.ListSectorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{sectorController.prepareEdit}" value="#{bundle.ListSectorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{sectorController.destroy}" value="#{bundle.ListSectorDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{sectorController.prepareCreate}" value="#{bundle.ListSectorCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

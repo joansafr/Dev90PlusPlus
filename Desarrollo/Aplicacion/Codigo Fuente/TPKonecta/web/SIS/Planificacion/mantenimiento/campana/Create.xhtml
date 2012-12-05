@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCampanaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.CreateCampanaLabel_campanaNombre}" for="campanaNombre" />
+                    <pou:inputText id="campanaNombre" value="#{campanaController.selected.campanaNombre}" title="#{bundle.CreateCampanaTitle_campanaNombre}" />
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{campanaController.create}" value="#{bundle.CreateCampanaSaveLink}" />
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="#{campanaController.prepareList}" value="#{bundle.CreateCampanaShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

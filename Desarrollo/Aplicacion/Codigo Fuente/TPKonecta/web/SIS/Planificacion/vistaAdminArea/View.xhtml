@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:messages id="messages" showDetail="true" autoUpdate="true"/>
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoPK_diaTrabajoFecha}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoPK.diaTrabajoFecha}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoHoraRefrigerio}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoHoraRefrigerio}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoHoraRefrigerio}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCodigoPlanilla}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoCodigoPlanilla}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCodigoPlanilla}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCodigoFotocheck}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoCodigoFotocheck}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCodigoFotocheck}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCantidadHorasSemanal}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoCantidadHorasSemanal}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCantidadHorasSemanal}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoFechaIncorporacion}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoFechaIncorporacion}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoFechaIncorporacion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoFechaBaja}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoFechaBaja}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoFechaBaja}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCantidadHijos}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoCantidadHijos}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCantidadHijos}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoDireccion}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoDireccion}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoDireccion}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoDireccionReferencia}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoDireccionReferencia}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoDireccionReferencia}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoSexo}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoSexo}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoSexo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoHoraIngresoReal}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.diaTrabajoHoraIngresoReal}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoHoraIngresoReal}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idResponsable}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idResponsable}" title="#{bundle.ViewDiaTrabajoTitle_idResponsable}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idSector}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idSector}" title="#{bundle.ViewDiaTrabajoTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idDepartamento}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idDepartamento}" title="#{bundle.ViewDiaTrabajoTitle_idDepartamento}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idCargo}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idCargo}" title="#{bundle.ViewDiaTrabajoTitle_idCargo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idTransporteDiaTrabajo}" title="#{bundle.ViewDiaTrabajoTitle_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_personal}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.personal}" title="#{bundle.ViewDiaTrabajoTitle_personal}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idDiaTrabajoEstado}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idDiaTrabajoEstado}" title="#{bundle.ViewDiaTrabajoTitle_idDiaTrabajoEstado}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idCausaIncidencia}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idCausaIncidencia}" title="#{bundle.ViewDiaTrabajoTitle_idCausaIncidencia}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idHoraIngreso}"/>
+                    <h:outputText value="#{vistaAdminArea.selected.idHoraIngreso}" title="#{bundle.ViewDiaTrabajoTitle_idHoraIngreso}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewDiaTrabajoEditLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" value="Ir a Vista de Administrador" action="vistaAdminArea" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

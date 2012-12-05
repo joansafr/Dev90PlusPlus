@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstadoCivilTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewEstadoCivilLabel_estadoCivilNombre}"/>
+                    <h:outputText value="#{estadoCivilController.selected.estadoCivilNombre}" title="#{bundle.ViewEstadoCivilTitle_estadoCivilNombre}"/>
+                    <h:outputText value="#{bundle.ViewEstadoCivilLabel_idEstadoCivil}"/>
+                    <h:outputText value="#{estadoCivilController.selected.idEstadoCivil}" title="#{bundle.ViewEstadoCivilTitle_idEstadoCivil}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{estadoCivilController.destroyAndView}" value="#{bundle.ViewEstadoCivilDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewEstadoCivilEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{estadoCivilController.prepareCreate}" value="#{bundle.ViewEstadoCivilCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{estadoCivilController.prepareList}" value="#{bundle.ViewEstadoCivilShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

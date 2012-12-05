@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProveedorEmpty}" rendered="#{proveedorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{proveedorController.items.rowCount > 0}">
+                    <pou:dataTable value="#{proveedorController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProveedorTitle_proveedorNombreComercial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proveedorNombreComercial}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProveedorTitle_proveedorRuc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proveedorRuc}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProveedorTitle_proveedorRazonSocial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proveedorRazonSocial}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProveedorTitle_proveedorDomicilioLegal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proveedorDomicilioLegal}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{proveedorController.prepareView}" value="#{bundle.ListProveedorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{proveedorController.prepareEdit}" value="#{bundle.ListProveedorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{proveedorController.destroy}" value="#{bundle.ListProveedorDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.prepareCreate}" value="#{bundle.ListProveedorCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

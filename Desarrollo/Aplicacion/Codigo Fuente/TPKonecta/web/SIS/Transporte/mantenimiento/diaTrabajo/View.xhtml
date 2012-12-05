@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoPK_diaTrabajoFecha}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoPK.diaTrabajoFecha}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoHoraRefrigerio}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoHoraRefrigerio}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoHoraRefrigerio}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCodigoPlanilla}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoCodigoPlanilla}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCodigoPlanilla}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCodigoFotocheck}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoCodigoFotocheck}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCodigoFotocheck}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCantidadHorasSemanal}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoCantidadHorasSemanal}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCantidadHorasSemanal}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoFechaIncorporacion}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoFechaIncorporacion}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoFechaIncorporacion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoFechaBaja}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoFechaBaja}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoFechaBaja}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoCantidadHijos}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoCantidadHijos}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoCantidadHijos}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoDireccion}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoDireccion}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoDireccion}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoDireccionReferencia}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoDireccionReferencia}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoDireccionReferencia}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoSexo}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoSexo}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoSexo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoHoraIngresoReal}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoHoraIngresoReal}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoHoraIngresoReal}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoNroVale}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoNroVale}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoNroVale}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoNombre}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoNombre}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoNombre}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoApellidoPaterno}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoApellidoPaterno}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoApellidoPaterno}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_diaTrabajoApellidoMaterno}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.diaTrabajoApellidoMaterno}" title="#{bundle.ViewDiaTrabajoTitle_diaTrabajoApellidoMaterno}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idHoraIngreso}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idHoraIngreso}" title="#{bundle.ViewDiaTrabajoTitle_idHoraIngreso}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idResponsable}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idResponsable}" title="#{bundle.ViewDiaTrabajoTitle_idResponsable}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idSector}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idSector}" title="#{bundle.ViewDiaTrabajoTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idCargo}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idCargo}" title="#{bundle.ViewDiaTrabajoTitle_idCargo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idTransporteDiaTrabajo}" title="#{bundle.ViewDiaTrabajoTitle_idTransporteDiaTrabajo}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_personal}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.personal}" title="#{bundle.ViewDiaTrabajoTitle_personal}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idDiaTrabajoEstado}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idDiaTrabajoEstado}" title="#{bundle.ViewDiaTrabajoTitle_idDiaTrabajoEstado}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idCausaIncidencia}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idCausaIncidencia}" title="#{bundle.ViewDiaTrabajoTitle_idCausaIncidencia}"/>
+                    <h:outputText value="#{bundle.ViewDiaTrabajoLabel_idDepartamento}"/>
+                    <h:outputText value="#{diaTrabajoController.selected.idDepartamento}" title="#{bundle.ViewDiaTrabajoTitle_idDepartamento}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.destroyAndView}" value="#{bundle.ViewDiaTrabajoDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewDiaTrabajoEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareCreate}" value="#{bundle.ViewDiaTrabajoCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareList}" value="#{bundle.ViewDiaTrabajoShowAllLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

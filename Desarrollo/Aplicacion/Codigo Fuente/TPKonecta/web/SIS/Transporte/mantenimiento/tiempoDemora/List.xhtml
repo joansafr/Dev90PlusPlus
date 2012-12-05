@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTiempoDemoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTiempoDemoraEmpty}" rendered="#{tiempoDemoraController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tiempoDemoraController.items.rowCount > 0}">
+                   <pou:dataTable value="#{tiempoDemoraController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTiempoDemoraTitle_idTiempoDemora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTiempoDemora}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTiempoDemoraTitle_tiempoDemoraFactor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempoDemoraFactor}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{tiempoDemoraController.prepareView}" value="#{bundle.ListTiempoDemoraViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{tiempoDemoraController.prepareEdit}" value="#{bundle.ListTiempoDemoraEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{tiempoDemoraController.destroy}" value="#{bundle.ListTiempoDemoraDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{tiempoDemoraController.prepareCreate}" value="#{bundle.ListTiempoDemoraCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

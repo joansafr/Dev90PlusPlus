@@ -1,0 +1,84 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ingreso - TPKonecta</title>
+	
+	<!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="/TPKonecta/faces/resources/css/styleLogin.css" />
+	<!-- Optimize for mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+</head>
+<body>
+	<!-- TOP BAR -->
+	<div id="top-bar">
+		
+		<div class="page-full-width">
+
+		</div> <!-- end full-width -->	
+	
+	</div> <!-- end top-bar -->
+	
+	
+	
+	<!-- HEADER -->
+	<div id="header">
+		
+		<div class="page-full-width cf">
+	
+			<div id="login-intro" class="fl">
+			
+				<h1>Ingreso al Sistema</h1>
+				<h5>Escriba sus credenciales</h5>
+			
+			</div> <!-- login-intro -->
+			
+			<!-- Change this image to your own company's logo -->
+			<!-- The logo will automatically be resized to 39px height. -->
+			<a href="#" id="company-branding" class="fr"><img src="/TPKonecta/faces/resources/images/company-logo.png" alt="Blue Hosting" /></a>
+			
+		</div> <!-- end full-width -->	
+
+	</div> <!-- end header -->
+	
+	
+	
+	<!-- MAIN CONTENT -->
+	<div id="content">
+	
+		<form action="j_security_check" method="POST" id="login-form" >
+		
+			<fieldset>
+
+				<p>
+					<label for="login-username">Usuario</label>
+					<input type="text" name="j_username" id="login-username" class="round full-width-input" autofocus />
+				</p>
+
+				<p>
+					<label for="login-password">Contraseña</label>
+					<input type="password" name="j_password"  class="round full-width-input" />
+				</p>
+                                
+				<input type="submit" class="button round blue image-right ic-right-arrow" value="Entrar" /> 
+
+			</fieldset><br />
+                        <%@ page session="true"%>
+                        <div class="information-box round">Usuario '<%=request.getRemoteUser()%>' ha cerrado sesion.</div>
+                        <% session.invalidate(); %></form>
+		
+	</div> <!-- end content -->
+	
+	
+	
+	<!-- FOOTER -->
+	<div id="footer">
+
+		<p>&copy; Copyright 2012 <a href="#">LATAM Consulting SAC</a>. Todos los derechos reservados.</p>
+	
+	</div> <!-- end footer -->
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="title">
+                K-Planificacion - Listado de Reportes
+            </ui:define>
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <f:facet name="header">
+                            <pou:row>  
+                                <pou:column colspan="10">Cantidad y Porcentaje de Rotaciones</pou:column>  
+                            </pou:row>
+                        </f:facet>
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_EdadDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Edad" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_EstadoCivilDepartamento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Estado Civil" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_GrupoFormacionDepartamento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Grupo de Formacion" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_NivelEducativoDepartamento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Nivel Educativo" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_ResponsableDepartamento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Responsable" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Rotacion_SexoDepartamento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sexo" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <br />
+                    <br />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

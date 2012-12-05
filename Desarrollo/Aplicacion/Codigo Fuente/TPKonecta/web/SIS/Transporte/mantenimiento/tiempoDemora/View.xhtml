@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTiempoDemoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewTiempoDemoraLabel_idTiempoDemora}"/>
+                    <h:outputText value="#{tiempoDemoraController.selected.idTiempoDemora}" title="#{bundle.ViewTiempoDemoraTitle_idTiempoDemora}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewTiempoDemoraLabel_tiempoDemoraFactor}"/>
+                    <h:outputText value="#{tiempoDemoraController.selected.tiempoDemoraFactor}" title="#{bundle.ViewTiempoDemoraTitle_tiempoDemoraFactor}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{tiempoDemoraController.destroyAndView}" value="#{bundle.ViewTiempoDemoraDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewTiempoDemoraEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{tiempoDemoraController.prepareCreate}" value="#{bundle.ViewTiempoDemoraCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{tiempoDemoraController.prepareList}" value="#{bundle.ViewTiempoDemoraShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

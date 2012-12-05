@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDistritoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDistritoEmpty}" rendered="#{distritoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{distritoController.items.rowCount > 0}">
+                    <pou:dataTable value="#{distritoController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDistritoTitle_idDistrito}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDistrito}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDistritoTitle_distritoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.distritoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{distritoController.prepareView}" value="#{bundle.ListDistritoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{distritoController.prepareEdit}" value="#{bundle.ListDistritoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{distritoController.destroy}" value="#{bundle.ListDistritoDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{distritoController.prepareCreate}" value="#{bundle.ListDistritoCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

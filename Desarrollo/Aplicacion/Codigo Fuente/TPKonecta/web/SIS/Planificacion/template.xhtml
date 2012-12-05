@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ezcomp="http://java.sun.com/jsf/composite/ezcomp" >
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/fg.menu.js"></script>
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/menubar1.css" type="text/css"  rel="stylesheet" />
+
+        <style type="text/css">
+            .ui-widget{font-size: inherit;}
+            .ui-widget-content{font-family: "Droid Sans", Helvetica, Arial, sans-serif; }
+            .ui-datepicker table{font-size: 0.7em;}
+            .ui-inputtext{max-width: 136px;}
+            .ui-selectonemenu{max-width: 136px; }
+            .ui-datatable .ui-selection-column{width:auto;}
+            #menuLog { font-size:1em; margin:20px; }
+            .ui-button-text{font-size: 12px;}
+            .hidden { position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden; }
+            .ui-dt-c {width: 110px;}
+
+
+            .fg-button { clear:left; padding: .4em 1em; text-decoration:none !important; cursor:pointer; position: relative; text-align: center;}
+            .fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+            a.fg-button { float:left;  }
+            button.fg-button { width:auto; overflow:visible; } /* removes extra button width in IE */
+
+            .fg-button-icon-left { padding-left: 2.1em; }
+            .fg-button-icon-right { padding-right: 2.1em; }
+            .fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
+            .fg-button-icon-right .ui-icon { left: auto; right: .2em; margin-left: 0; }
+            .fg-button-icon-solo { display:block; width:8px; text-indent: -9999px; }	 /* solo icon buttons must have block properties for the text-indent to work */	
+
+            /*.fg-menu-container {height: 350px;}*/
+
+            .fg-button.ui-state-loading .ui-icon { background: url('./resources/images/resospinner_bar.gif') no-repeat 0 0; }
+        </style>
+                <script type="text/javascript">    
+            $(function(){
+                // BUTTONS
+                $('.fg-button').hover(
+                function(){ $(this).removeClass('ui-state-default').addClass('ui-state-focus'); },
+                function(){ $(this).removeClass('ui-state-focus').addClass('ui-state-default'); }
+            );
+    	
+                // MENUS    	
+		
+                $('#hierarchybreadcrumb').menu({
+                    content: $('#hierarchybreadcrumb').next().html(),
+                    backLink: true,
+                    crumbDefaultText: 'Seleccione:'
+                });
+		
+                // or from an external source
+                $.get('menuContent.html', function(data){ // grab content from another page
+                    $('#flyout').menu({ content: data, flyOut: true });
+                });
+            });
+        </script>
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top-bar">
+            <img style=" float: left" src="#{facesContext.externalContext.requestContextPath}/resources/images/titulop.png" />
+            <p style="text-align: right"><a class="round button blue text-upper small-button" href="/TPKonecta/faces/SIS/Planificacion/index.xhtml" style="text-align: left;font-size: 12px;">Planificacion</a>        <a class="round button blue text-upper small-button" href="/TPKonecta/faces/SIS/Transporte/index.xhtml" style="text-align: left;font-size: 12px;">Transporte</a> <a class="dark" style="color: #2a2e36;background-color: #2a2e36"> ______</a> <a class="round button dark text-upper small-button" href="/TPKonecta/faces/Login/logout.jsp" style="text-align: right;font-size: 12px;">Cerrar Sesion</a></p>
+            <ui:insert name="top"></ui:insert>
+        </div>
+        <div id="content">
+            <div class="side-menu fl">
+                <div id="left">
+                </div>
+            </div>
+            <div class="side-content fr">
+                <div class="content-module-main">
+                    <ui:insert name="body"></ui:insert>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottom" class="footer">
+            <ui:insert name="bottom"></ui:insert>
+            <ezcomp:menubarP></ezcomp:menubarP>
+            <p style="text-align: center; font-size: 12px">&copy; Copyright 2012 <a href="http://laconsultingsac.com" style="font-size: 1em;">LATAM Consulting SAC</a>. Todos los derechos reservados.</p>
+        </div>
+    </h:body> 
+
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_proveedorNombreComercial}" for="proveedorNombreComercial" />
+                    <pou:inputText id="proveedorNombreComercial" value="#{proveedorController.selected.proveedorNombreComercial}" title="#{bundle.CreateProveedorTitle_proveedorNombreComercial}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_proveedorRuc}" for="proveedorRuc" />
+                    <pou:inputText id="proveedorRuc" value="#{proveedorController.selected.proveedorRuc}" title="#{bundle.CreateProveedorTitle_proveedorRuc}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_proveedorRazonSocial}" for="proveedorRazonSocial" />
+                    <pou:inputText id="proveedorRazonSocial" value="#{proveedorController.selected.proveedorRazonSocial}" title="#{bundle.CreateProveedorTitle_proveedorRazonSocial}" />
+                    <h:outputLabel value="#{bundle.CreateProveedorLabel_proveedorDomicilioLegal}" for="proveedorDomicilioLegal" />
+                    <pou:inputText id="proveedorDomicilioLegal" value="#{proveedorController.selected.proveedorDomicilioLegal}" title="#{bundle.CreateProveedorTitle_proveedorDomicilioLegal}" />
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.create}" value="#{bundle.CreateProveedorSaveLink}" />
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.prepareList}" value="#{bundle.CreateProveedorShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

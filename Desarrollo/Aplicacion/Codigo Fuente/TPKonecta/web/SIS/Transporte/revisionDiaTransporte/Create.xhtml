@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTransporteDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_transporteDiaTrabajoPlaca}" for="transporteDiaTrabajoPlaca" />
+                    <pou:inputText id="transporteDiaTrabajoPlaca" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoPlaca}" title="#{bundle.CreateTransporteDiaTrabajoTitle_transporteDiaTrabajoPlaca}" />
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_transporteDiaTrabajoObservaciones}" for="transporteDiaTrabajoObservaciones" />
+                    <pou:inputText id="transporteDiaTrabajoObservaciones" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoObservaciones}" title="#{bundle.CreateTransporteDiaTrabajoTitle_transporteDiaTrabajoObservaciones}" />
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_transporteDiaTrabajoFecha}" for="transporteDiaTrabajoFecha" />
+                    <pou:calendar id="transporteDiaTrabajoFecha" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoFecha}" title="#{bundle.CreateTransporteDiaTrabajoTitle_transporteDiaTrabajoFecha}" pattern="yyyy-MM-dd" required="true" />
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{transporteDiaTrabajoController.selected.idHoraIngreso}" title="#{bundle.CreateTransporteDiaTrabajoTitle_idHoraIngreso}" required="true" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_idPadron}" for="idPadron" />
+                    <pou:selectOneMenu id="idPadron" value="#{transporteDiaTrabajoController.selected.idPadron}" title="#{bundle.CreateTransporteDiaTrabajoTitle_idPadron}" >
+                        <f:selectItems value="#{padronController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTransporteDiaTrabajoLabel_idTipoVehiculo}" for="idTipoVehiculo" />
+                    <pou:selectOneMenu id="idTipoVehiculo" value="#{transporteDiaTrabajoController.selected.idTipoVehiculo}" title="#{bundle.CreateTransporteDiaTrabajoTitle_idTipoVehiculo}" required="true">
+                        <f:selectItems value="#{tipoVehiculoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.create}" value="#{bundle.CreateTransporteDiaTrabajoSaveLink}" />
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareList}" value="#{bundle.CreateTransporteDiaTrabajoShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

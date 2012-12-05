@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="title">
+                K-Transporte - Listado de Reportes
+            </ui:define>
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <f:facet name="header">
+                            <pou:row>  
+                                <pou:column colspan="10">Cantidad de Agentes No Atentidos</pou:column>  
+                            </pou:row>
+                        </f:facet>
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_Departamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_DepartamentoHora")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Departamento y Hora de Ingreso" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_Dia")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Dia" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_DiaHora")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Dia y Hora de Ingreso" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_Distrito")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Distrito" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_DistritoHora")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Distrito y Hora de Ingreso" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_Sector")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sector" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reporteTransporte.ir("CantidadNoAtendido_SectorHora")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Sector y Hora de Ingreso" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <br />
+                    <br />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

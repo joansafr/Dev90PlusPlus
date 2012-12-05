@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_personal}" for="personal" />
+                    <pou:selectOneMenu disabled="true" id="personal" value="#{generarTransporte.selected.personal}" title="#{bundle.EditDiaTrabajoTitle_personal}" required="true" requiredMessage="#{bundle.EditDiaTrabajoRequiredMessage_personal}">
+                        <f:selectItems value="#{personalController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoNombre}" for="diaTrabajoNombre" />
+                    <pou:inputText disabled="true" id="diaTrabajoNombre" value="#{generarTransporte.selected.diaTrabajoNombre}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoNombre}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoApellidoPaterno}" for="diaTrabajoApellidoPaterno" />
+                    <pou:inputText disabled="true" id="diaTrabajoApellidoPaterno" value="#{generarTransporte.selected.diaTrabajoApellidoPaterno}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoApellidoPaterno}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoApellidoMaterno}" for="diaTrabajoApellidoMaterno" />
+                    <pou:inputText disabled="true" id="diaTrabajoApellidoMaterno" value="#{generarTransporte.selected.diaTrabajoApellidoMaterno}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoApellidoMaterno}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoDireccion}" for="diaTrabajoDireccion" />
+                    <pou:inputText id="diaTrabajoDireccion" value="#{generarTransporte.selected.diaTrabajoDireccion}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoDireccion}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoDireccionReferencia}" for="diaTrabajoDireccionReferencia" />
+                    <pou:inputText id="diaTrabajoDireccionReferencia" value="#{generarTransporte.selected.diaTrabajoDireccionReferencia}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoDireccionReferencia}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{generarTransporte.selected.idHoraIngreso}" title="#{bundle.EditDiaTrabajoTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idResponsable}" for="idResponsable" />
+                    <pou:selectOneMenu id="idResponsable" value="#{generarTransporte.selected.idResponsable}" title="#{bundle.EditDiaTrabajoTitle_idResponsable}" >
+                        <f:selectItems value="#{responsableController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idSector}" for="idSector" />
+                    <pou:selectOneMenu id="idSector" value="#{generarTransporte.selected.idSector}" title="#{bundle.EditDiaTrabajoTitle_idSector}" >
+                        <f:selectItems value="#{sectorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idDepartamento}" for="idDepartamento" />
+                    <pou:selectOneMenu id="idDepartamento" value="#{generarTransporte.selected.idDepartamento}" title="#{bundle.EditDiaTrabajoTitle_idDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{generarTransporte.update}" value="Guardar y Volver"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

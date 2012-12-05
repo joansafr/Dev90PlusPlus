@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPersonalLogTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditPersonalLogLabel_idPersonalLog}" for="idPersonalLog" />
+                    <pou:inputText disabled="true" id="idPersonalLog" value="#{personalLogController.selected.idPersonalLog}" title="#{bundle.EditPersonalLogTitle_idPersonalLog}" required="true" requiredMessage="#{bundle.EditPersonalLogRequiredMessage_idPersonalLog}"/>
+                    <h:outputLabel value="#{bundle.EditPersonalLogLabel_personalLogNombre}" for="personalLogNombre" />
+                    <pou:inputText disabled="true" id="personalLogNombre" value="#{personalLogController.selected.personalLogNombre}" title="#{bundle.EditPersonalLogTitle_personalLogNombre}" required="true" requiredMessage="#{bundle.EditPersonalLogRequiredMessage_personalLogNombre}"/>
+                    <h:outputLabel value="#{bundle.EditPersonalLogLabel_idPersonal}" for="idPersonal" />
+                    <pou:selectOneMenu disabled="true" id="idPersonal" value="#{personalLogController.selected.idPersonal}" title="#{bundle.EditPersonalLogTitle_idPersonal}" required="true" requiredMessage="#{bundle.EditPersonalLogRequiredMessage_idPersonal}">
+                        <f:selectItems value="#{personalController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{personalLogController.update}" value="#{bundle.EditPersonalLogSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditPersonalLogViewLink}" immediate="true"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalLogController.prepareList}" value="#{bundle.EditPersonalLogShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

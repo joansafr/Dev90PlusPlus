@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewProveedorLabel_proveedorNombreComercial}"/>
+                    <h:outputText value="#{proveedorController.selected.proveedorNombreComercial}" title="#{bundle.ViewProveedorTitle_proveedorNombreComercial}"/>
+                    <h:outputText value="#{bundle.ViewProveedorLabel_idProveedor}"/>
+                    <h:outputText value="#{proveedorController.selected.idProveedor}" title="#{bundle.ViewProveedorTitle_idProveedor}"/>
+                    <h:outputText value="#{bundle.ViewProveedorLabel_proveedorRuc}"/>
+                    <h:outputText value="#{proveedorController.selected.proveedorRuc}" title="#{bundle.ViewProveedorTitle_proveedorRuc}"/>
+                    <h:outputText value="#{bundle.ViewProveedorLabel_proveedorRazonSocial}"/>
+                    <h:outputText value="#{proveedorController.selected.proveedorRazonSocial}" title="#{bundle.ViewProveedorTitle_proveedorRazonSocial}"/>
+                    <h:outputText value="#{bundle.ViewProveedorLabel_proveedorDomicilioLegal}"/>
+                    <h:outputText value="#{proveedorController.selected.proveedorDomicilioLegal}" title="#{bundle.ViewProveedorTitle_proveedorDomicilioLegal}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.destroyAndView}" value="#{bundle.ViewProveedorDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewProveedorEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.prepareCreate}" value="#{bundle.ViewProveedorCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{proveedorController.prepareList}" value="#{bundle.ViewProveedorShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

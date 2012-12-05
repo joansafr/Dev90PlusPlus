@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCausaIncidenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewCausaIncidenciaLabel_causaIncidenciaNombre}"/>
+                    <h:outputText value="#{causaIncidenciaController.selected.causaIncidenciaNombre}" title="#{bundle.ViewCausaIncidenciaTitle_causaIncidenciaNombre}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{causaIncidenciaController.destroyAndView}" value="#{bundle.ViewCausaIncidenciaDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewCausaIncidenciaEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{causaIncidenciaController.prepareCreate}" value="#{bundle.ViewCausaIncidenciaCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{causaIncidenciaController.prepareList}" value="#{bundle.ViewCausaIncidenciaShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

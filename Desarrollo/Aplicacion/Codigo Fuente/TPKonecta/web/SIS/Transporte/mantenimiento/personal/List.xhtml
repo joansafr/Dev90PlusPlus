@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{personalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{personalController.items.rowCount > 0}">
+                    <h:outputText value="#{personalController.pagination.pageFirstItem + 1}..#{personalController.pagination.pageLastItem + 1}/#{personalController.pagination.itemsCount}"/>&nbsp;
+                    <pou:commandButton ajax="false" action="#{personalController.previous}" value="#{bundle.Previous} #{personalController.pagination.pageSize}" rendered="#{personalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <pou:commandButton ajax="false" action="#{personalController.next}" value="#{bundle.Next} #{personalController.pagination.pageSize}" rendered="#{personalController.pagination.hasNextPage}"/>&nbsp;
+                    <pou:dataTable value="#{personalController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idPersonal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonal}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalCodigoPlanilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCodigoPlanilla}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalCodigoFotocheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCodigoFotocheck}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalApellidoPaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalApellidoMaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalApellidoMaterno}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalUsuario}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalContrasena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalContrasena}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalCantidadHorasSemanal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCantidadHorasSemanal}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalConfianza}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalConfianza}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaIncorporacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaIncorporacion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalActividad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalActividad}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaBaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaBaja}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaFormacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaFormacion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaIngresoGestion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaIngresoGestion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaNacimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaNacimiento}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalSexo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalSexo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalCantidadHijos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCantidadHijos}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalDireccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalDireccion}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalDireccionReferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalDireccionReferencia}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalTelefonoFijo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalTelefonoFijo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalTelefonoMovil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalTelefonoMovil}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalEmail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalEmail}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalHoraRefrigerioInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalHoraRefrigerioInicio}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalHoraRefrigerioDuracion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalHoraRefrigerioDuracion}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalLatitude}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalLatitude}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalLongitude}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalLongitude}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalContrato}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalCantidadDiasSemanal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalCantidadDiasSemanal}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_personalFechaVencimientoContrato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalFechaVencimientoContrato}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idResponsable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idResponsable}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idCentroEstudios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCentroEstudios}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idCarrera}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCarrera}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idNivelEducativo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNivelEducativo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idEstadoCivil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstadoCivil}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idGrupoFormacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idGrupoFormacion}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idMotivoBaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMotivoBaja}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCargo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idHoraIngreso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idSector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSector}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalTitle_idDepartamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDepartamento}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{personalController.prepareView}" value="#{bundle.ListPersonalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalController.prepareEdit}" value="#{bundle.ListPersonalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalController.destroy}" value="#{bundle.ListPersonalDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareCreate}" value="#{bundle.ListPersonalCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

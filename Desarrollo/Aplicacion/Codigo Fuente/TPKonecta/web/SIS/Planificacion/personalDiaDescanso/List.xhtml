@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalDiaDescansoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                </f:facet>  
+
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>  
+            </pou:ajaxStatus>
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <pou:panel header="Seleccione la fecha:" style="width: 95%;margin-left: auto; margin-right: auto">
+                    <pou:panelGrid columns="6">  
+                        <pou:calendar value="#{revisionDescansos.fecha}"  id="popupCal" pattern="yyyy-MM-dd">
+                        </pou:calendar>  
+                        <pou:commandButton value="Listar"  update="@form" actionListener="#{revisionDescansos.prepareRevisionDescanso()}" />
+                    </pou:panelGrid>
+                </pou:panel>
+                <br />
+                <h:outputText escape="false" value="#{bundle.ListPersonalDiaDescansoEmpty}" rendered="#{revisionDescansos.getRevisionDescanso().rowCount == 0}"/>
+                <h:panelGroup rendered="#{revisionDescansos.getRevisionDescanso().rowCount > 0}">
+                    <pou:dataTable value="#{revisionDescansos.getRevisionDescanso()}" var="item"  style="width: 95%;margin-right: auto; padding-left: 2%" emptyMessage="No se encontró personal bajo este criterio.">
+                        <pou:column filterBy="#{item.personal.idPersonal}" style="width:130px" headerText="#{bundle.ListPersonalDiaDescansoTitle_personal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.idPersonal}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.personalNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalNombre}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.personalNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.personalApellidoPaterno}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalApellidoPaterno}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.personalApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.personalApellidoMaterno}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalApellidoMaterno}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.personalApellidoMaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.idHoraIngreso}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.idSector.sectorNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idSector}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.idSector.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personal.idDepartamento.departamentoNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idDepartamento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.idDepartamento.departamentoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareView}" value="#{bundle.ListPersonalDiaDescansoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareEdit}" value="#{bundle.ListPersonalDiaDescansoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" onclick="confirmation.show()"  value="#{bundle.ListPersonalDiaDescansoDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <pou:confirmDialog id="confirmDialog" message="¿Esta seguro que desea eliminar?"  
+                                 header="Eliminacion!" severity="alert" widgetVar="confirmation">  
+
+                    <pou:commandButton id="confirm" value="Si,Seguro" update="growl" oncomplete="confirmation.hide()"  
+                                     action="#{personalDiaDescansoController.destroy}" />  
+                    <pou:commandButton id="decline" value="Aun no" onclick="confirmation.hide()" type="button" />   
+
+                </pou:confirmDialog>  
+                <br />
+                <!--<pou:commandButton ajax="false" action="{personalDiaDescansoController.prepareCreate}" value="{bundle.ListPersonalDiaDescansoCreateLink}"/>-->
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonalDiaDescansoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.CreatePersonalDiaDescansoLabel_personalDiaDescansoPK_personalDiaDescansoFecha}" for="personalDiaDescansoPK_personalDiaDescansoFecha" />
+                    <pou:inputText id="personalDiaDescansoPK_personalDiaDescansoFecha" value="#{personalDiaDescansoController.selected.personalDiaDescansoPK.personalDiaDescansoFecha}" title="#{bundle.CreatePersonalDiaDescansoTitle_personalDiaDescansoPK_personalDiaDescansoFecha}" required="true" requiredMessage="#{bundle.CreatePersonalDiaDescansoRequiredMessage_personalDiaDescansoPK_personalDiaDescansoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.CreatePersonalDiaDescansoLabel_personal}" for="personal" />
+                    <pou:selectOneMenu id="personal" value="#{personalDiaDescansoController.selected.personal}" title="#{bundle.CreatePersonalDiaDescansoTitle_personal}" required="true" requiredMessage="#{bundle.CreatePersonalDiaDescansoRequiredMessage_personal}">
+                        <f:selectItems value="#{personalController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalDiaDescansoController.create}" value="#{bundle.CreatePersonalDiaDescansoSaveLink}" />
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareList}" value="#{bundle.CreatePersonalDiaDescansoShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

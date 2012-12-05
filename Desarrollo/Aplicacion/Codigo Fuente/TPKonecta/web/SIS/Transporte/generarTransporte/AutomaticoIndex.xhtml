@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Generar Transporte"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                </f:facet>  
+
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>  
+            </pou:ajaxStatus> 
+            <h:form>
+                <pou:panel style="width: 95%;margin-left: auto; margin-right: auto" header="Seleccione la fecha:"> 
+                    <pou:panelGrid columns="6">  
+                        <pou:calendar value="#{diaTrabajoController.fecha}"  id="popupCal" pattern="yyyy-MM-dd">
+                        </pou:calendar>
+                        <pou:commandButton value="Listar"  actionListener="#{diaTrabajoController.prepareDiaTrabajo}"  update="@form" />
+                    </pou:panelGrid>
+                </pou:panel>
+                <br />
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+
+                <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{diaTrabajoController.getvDiaTrabajo().rowCount == 0}"/>
+                <h:panelGroup rendered="#{diaTrabajoController.getvDiaTrabajo().rowCount > 0}">
+
+                    <pou:dataTable value="#{diaTrabajoController.getvDiaTrabajo()}"  var="item" 
+                                   widgetVar="diaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                   scrollable="true" scrollHeight="375"
+                                   style="width: 95%; margin-right: auto; padding-left: 2%">
+
+                        <pou:column filterBy="#{item.personal.idPersonal}" style="width:130px" headerText="Personal" filterMatchMode="contains">
+                            <h:outputText value="#{item.personal.idPersonal}"/>
+                        </pou:column>
+                        <pou:column  filterBy="#{item.diaTrabajoNombre}" style="width:130px" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.diaTrabajoApellidoPaterno}" style="width:130px" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoApellidoPaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idSector}" style="width:130px"  headerText="#{bundle.ListDiaTrabajoTitle_idSector}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idSector.sectorNombre}"/>
+                        </pou:column> 
+                        <pou:column filterBy="#{item.idHoraIngreso.idHoraIngreso}" style="width:130px"  headerText="#{bundle.CreateDiaTrabajoTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idHoraIngreso.idHoraIngreso}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.diaTrabajoSexo}"  style="width:130px" headerText="#{bundle.CreateDiaTrabajoTitle_diaTrabajoSexo}" filterMatchMode="contains">
+                            <h:outputText value="Varon" rendered="#{item.diaTrabajoSexo == true}" />
+                            <h:outputText value="Mujer" rendered="#{item.diaTrabajoSexo == false}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.idResponsable.responsableNombreApellido}"  style="width:130px"  headerText="#{bundle.CreateDiaTrabajoTitle_idResponsable}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idResponsable.responsableNombreApellido}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idDepartamento.departamentoNombre}"  style="width:130px" headerText="#{bundle.CreateDiaTrabajoTitle_idDepartamento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idDepartamento.departamentoNombre}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                    <pou:commandButton value="Generar Transporte: #{diaTrabajoController.fecha.toLocaleString()}" update="@form" actionListener="#{diaTrabajoController.generarTransporte(diaTrabajoController.fecha)}" />
+                    <br />
+                    <br />
+                    <pou:commandButton value="Ir al Modo Manual" global="false" action="#{diaTrabajoController.irManual}" immediate="true" />
+                </h:panelGroup>
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

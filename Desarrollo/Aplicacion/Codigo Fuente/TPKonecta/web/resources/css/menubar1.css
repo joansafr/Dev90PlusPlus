@@ -1,0 +1,27 @@
+            #content{margin: 0 0 0 43px; padding: 0px; font-size: 12px; font-family: "Droid Sans", Helvetica, Arial, sans-serif;}
+            /* dock */
+            #dock{margin:0px; padding:0px; list-style:none; position:fixed; top:35px; height:100%; 
+                  z-index:100; background-color:#f0f0f0; left:0px;}
+            #dock > li {width:40px; height:120px; margin: 0 0 1px 0; background-color:#dcdcdc;
+                        background-repeat:no-repeat; background-position:left;}
+
+            #dock #masivos {background-image:url('../images/masivos.png');}
+            #dock #revision {background-image:url('../images/revision.png');}
+            #dock #reportes {background-image:url('../images/reportes.png');}
+            #dock #configuracion {background-image:url('../images/configuracion.png');}
+            #dock #vistas {background-image:url('../images/vistas.png');}
+
+            #dock > li:hover {background-position:-40px 0px;}
+
+            /* panels */
+            #dock ul li {padding:5px; border: solid 1px #F1F1F1;}
+            #dock ul li:hover {background:#D3DAED url('../images/item_bkg.png') repeat-x; border: solid 1px #A8D8EB;}
+            #dock ul li.header, #dock ul li .header:hover {background:#D3DAED url('../images/header_bkg.png') repeat-x;border: solid 1px #F1F1F1;}
+
+            #dock > li:hover ul {display:block;}
+            #dock > li ul {position:absolute; top:0px; left:-180px;  z-index:-1;width:180px; display:none;
+                           background-color:#F1F1F1; border:solid 1px #969696; padding:0px; margin:0px; list-style:none;}
+            #dock > li ul.docked { display:block;z-index:-2;}
+
+            .dock,.undock{float:right;}
+            .undock {display:none;}

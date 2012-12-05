@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTransporteDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoCantidadPersonas}" for="transporteDiaTrabajoCantidadPersonas" />
+                    <pou:inputText id="transporteDiaTrabajoCantidadPersonas" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCantidadPersonas}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoCantidadPersonas}" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoPlaca}" for="transporteDiaTrabajoPlaca" />
+                    <pou:inputText id="transporteDiaTrabajoPlaca" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoPlaca}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoPlaca}" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoObservaciones}" for="transporteDiaTrabajoObservaciones" />
+                    <pou:inputText id="transporteDiaTrabajoObservaciones" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoObservaciones}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoObservaciones}" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoFecha}" for="transporteDiaTrabajoFecha" />
+                    <pou:calendar id="transporteDiaTrabajoFecha" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoFecha}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoFecha}" pattern="yyyy-MM-dd" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoCostoTotal}" for="transporteDiaTrabajoCostoTotal" />
+                    <pou:inputText id="transporteDiaTrabajoCostoTotal" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCostoTotal}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoTotal}" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_transporteDiaTrabajoCostoPorPersona}" for="transporteDiaTrabajoCostoPorPersona" />
+                    <pou:inputText id="transporteDiaTrabajoCostoPorPersona" value="#{transporteDiaTrabajoController.selected.transporteDiaTrabajoCostoPorPersona}" title="#{bundle.EditTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoPorPersona}" />
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idTiempoDemora}" for="idTiempoDemora" />
+                    <pou:selectOneMenu id="idTiempoDemora" value="#{transporteDiaTrabajoController.selected.idTiempoDemora}" title="#{bundle.EditTransporteDiaTrabajoTitle_idTiempoDemora}" >
+                        <f:selectItems value="#{tiempoDemoraController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idProveedor}" for="idProveedor" />
+                    <pou:selectOneMenu id="idProveedor" value="#{transporteDiaTrabajoController.selected.idProveedor}" title="#{bundle.EditTransporteDiaTrabajoTitle_idProveedor}" >
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{transporteDiaTrabajoController.selected.idHoraIngreso}" title="#{bundle.EditTransporteDiaTrabajoTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idSector}" for="idSector" />
+                    <pou:selectOneMenu id="idSector" value="#{transporteDiaTrabajoController.selected.idSector}" title="#{bundle.EditTransporteDiaTrabajoTitle_idSector}" >
+                        <f:selectItems value="#{sectorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idPadron}" for="idPadron" />
+                    <pou:selectOneMenu id="idPadron" value="#{transporteDiaTrabajoController.selected.idPadron}" title="#{bundle.EditTransporteDiaTrabajoTitle_idPadron}" >
+                        <f:selectItems value="#{padronController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idCausaDemora}" for="idCausaDemora" />
+                    <pou:selectOneMenu id="idCausaDemora" value="#{transporteDiaTrabajoController.selected.idCausaDemora}" title="#{bundle.EditTransporteDiaTrabajoTitle_idCausaDemora}" >
+                        <f:selectItems value="#{causaDemoraController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTransporteDiaTrabajoLabel_idTipoVehiculo}" for="idTipoVehiculo" />
+                    <pou:selectOneMenu id="idTipoVehiculo" value="#{transporteDiaTrabajoController.selected.idTipoVehiculo}" title="#{bundle.EditTransporteDiaTrabajoTitle_idTipoVehiculo}" >
+                        <f:selectItems value="#{tipoVehiculoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.update}" value="#{bundle.EditTransporteDiaTrabajoSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditTransporteDiaTrabajoViewLink}" immediate="true"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareList}" value="#{bundle.EditTransporteDiaTrabajoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" value="#{bundle.EditTransporteDiaTrabajoIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

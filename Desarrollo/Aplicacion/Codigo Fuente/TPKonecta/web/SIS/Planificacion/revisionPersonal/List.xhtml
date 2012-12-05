@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+   <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{personalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{personalController.items.rowCount > 0}">
+                    <pou:dataTable id="tablaPersonal" value="#{personalController.items}" var="item" emptyMessage="No se encontró personal bajo este criterio."
+                                   scrollable="true" scrollWidth="1145" scrollHeight="500"
+                                   style="width: 95%; margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="Opciones"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{personalController.prepareView}" icon="ui-icon-disk"/><h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalController.prepareEdit}" icon="ui-icon-pencil"/><h:outputText value=" "/>
+                            <pou:commandButton onclick="confirmation.show()" icon="ui-icon-trash" >
+                                <f:setPropertyActionListener value="#{item}" target="#{personalController.selecionado}" />
+                            </pou:commandButton> <h:outputText value=" "/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idPersonal}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idPersonal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idPersonal}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalCodigoPlanilla}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalCodigoPlanilla}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalCodigoPlanilla}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalCodigoFotocheck}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalCodigoFotocheck}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalCodigoFotocheck}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalNombre}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalApellidoPaterno}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalApellidoPaterno}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalApellidoMaterno}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalApellidoMaterno}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalApellidoMaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalUsuario}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalUsuario}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalUsuario}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalContrasena}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalContrasena}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalContrasena}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalCantidadHorasSemanal}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalCantidadHorasSemanal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalCantidadHorasSemanal}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalConfianza}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalConfianza}" filterMatchMode="contains">
+                            <h:outputText value="Si" rendered="#{item.personalConfianza == true}" /><h:outputText value="No" rendered="#{item.personalConfianza == false}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaIncorporacion}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaIncorporacion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaIncorporacion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalActividad}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalActividad}" filterMatchMode="contains">
+                            <h:outputText value="Si" rendered="#{item.personalActividad == true}" /><h:outputText value="No" rendered="#{item.personalActividad == false}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaBaja}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaBaja}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaBaja}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaFormacion}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaFormacion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaFormacion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaIngresoGestion}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaIngresoGestion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaIngresoGestion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaNacimiento}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaNacimiento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaNacimiento}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalSexo}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalSexo}" filterMatchMode="contains">
+                            <h:outputText value="Varon" rendered="#{item.personalSexo == true}" />
+                            <h:outputText value="Mujer" rendered="#{item.personalSexo == false}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalCantidadHijos}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalCantidadHijos}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalCantidadHijos}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalDireccion}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalDireccion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalDireccion}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalDireccionReferencia}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalDireccionReferencia}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalDireccionReferencia}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalTelefonoFijo}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalTelefonoFijo}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalTelefonoFijo}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalTelefonoMovil}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalTelefonoMovil}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalTelefonoMovil}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalEmail}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalEmail}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalEmail}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalHoraRefrigerioInicio}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalHoraRefrigerioInicio}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalHoraRefrigerioInicio}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalHoraRefrigerioDuracion}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalHoraRefrigerioDuracion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalHoraRefrigerioDuracion}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalCantidadDiasSemanal}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalCantidadDiasSemanal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalCantidadDiasSemanal}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalFechaVencimientoContrato}" style="width:130px" headerText="#{bundle.ListPersonalTitle_personalFechaVencimientoContrato}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalFechaVencimientoContrato}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idResponsable.responsableNombreApellido}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idResponsable}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idResponsable.responsableNombreApellido}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idCentroEstudios.centroEstudiosNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idCentroEstudios}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idCentroEstudios.centroEstudiosNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idCarrera.carreraNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idCarrera}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idCarrera.carreraNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idNivelEducativo.nivelEducativoNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idNivelEducativo}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idNivelEducativo.nivelEducativoNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idEstadoCivil.estadoCivilNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idEstadoCivil}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idEstadoCivil.estadoCivilNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idGrupoFormacion.grupoFormacionNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idGrupoFormacion}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idGrupoFormacion.grupoFormacionNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idMotivoBaja}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idMotivoBaja}" filterMatchMode="contains">
+                           <h:outputText value="#{item.idMotivoBaja}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idCargo.cargoNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idCargo}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idCargo.cargoNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idHoraIngreso}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idSector.sectorNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idSector}" filterMatchMode="contains">
+                           <h:outputText value="#{item.idSector.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idDepartamento.departamentoNombre}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idDepartamento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idDepartamento.departamentoNombre}"/>
+                        </pou:column>
+
+                    </pou:dataTable>
+                </h:panelGroup>
+                <pou:confirmDialog id="confirmDialog" message="¿Esta seguro que desea eliminar?"  
+                                 header="Eliminacion!" severity="alert" widgetVar="confirmation">  
+
+                    <pou:commandButton ajax="false" id="confirm" value="Si,Seguro" update="tablaPersonal" oncomplete="confirmation.hide()" action="#{personalController.destroy}" >
+                    </pou:commandButton>  
+                    <pou:commandButton id="decline" value="Aun no" onclick="confirmation.hide()" type="button" />   
+
+                </pou:confirmDialog>  
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareCreate}" value="#{bundle.ListPersonalCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

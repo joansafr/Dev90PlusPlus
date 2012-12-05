@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDiaTrabajoEmpty}" rendered="#{diaTrabajoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{diaTrabajoController.items.rowCount > 0}">
+                    <h:outputText value="#{diaTrabajoController.pagination.pageFirstItem + 1}..#{diaTrabajoController.pagination.pageLastItem + 1}/#{diaTrabajoController.pagination.itemsCount}"/>&nbsp;
+                    <pou:commandButton ajax="false" action="#{diaTrabajoController.previous}" value="#{bundle.Previous} #{diaTrabajoController.pagination.pageSize}" rendered="#{diaTrabajoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <pou:commandButton ajax="false" action="#{diaTrabajoController.next}" value="#{bundle.Next} #{diaTrabajoController.pagination.pageSize}" rendered="#{diaTrabajoController.pagination.hasNextPage}"/>&nbsp;
+                    <pou:dataTable value="#{diaTrabajoController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoPK.diaTrabajoFecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoHoraRefrigerio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoHoraRefrigerio}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoCodigoPlanilla}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoCodigoPlanilla}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoCodigoFotocheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoCodigoFotocheck}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoCantidadHorasSemanal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoCantidadHorasSemanal}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoFechaIncorporacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoFechaIncorporacion}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoFechaBaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoFechaBaja}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoCantidadHijos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoCantidadHijos}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoDireccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoDireccion}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoDireccionReferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoDireccionReferencia}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoSexo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoSexo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoHoraIngresoReal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoHoraIngresoReal}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoNroVale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoNroVale}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoNombre}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoApellidoPaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoApellidoMaterno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoApellidoMaterno}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idHoraIngreso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idResponsable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idResponsable}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idSector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSector}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCargo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idTransporteDiaTrabajo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTransporteDiaTrabajo}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_personal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personal}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idDiaTrabajoEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDiaTrabajoEstado}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idCausaIncidencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCausaIncidencia}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_idDepartamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDepartamento}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareView}" value="#{bundle.ListDiaTrabajoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareEdit}" value="#{bundle.ListDiaTrabajoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{diaTrabajoController.destroy}" value="#{bundle.ListDiaTrabajoDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareCreate}" value="#{bundle.ListDiaTrabajoCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

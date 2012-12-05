@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Validación de Movilidad"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                </f:facet>  
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>
+            </pou:ajaxStatus> 
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <pou:panel style="width: 95%;margin-left: auto; margin-right: auto" header="Seleccione la fecha y hora:">   
+                    <pou:panelGrid columns="6" style="width: 95%; margin-left: auto; margin-right: auto">
+                        <pou:commandButton style="width: 150px;" value="Listar"  actionListener="#{validacionMovilidad.prepareDiaTrabajoValidacion}"  update="@form" />
+                        <h:outputLabel value="Fecha :  " style="width: 150px;" />
+                        <pou:calendar value="#{validacionMovilidad.fecha}"  id="popupCal" pattern="yyyy-MM-dd" />
+                        <h:outputLabel value="Hora : " style="width: 150px;"/>
+                        <pou:selectOneMenu value="#{validacionMovilidad.hora}" style="width: 130px;" >
+                            <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                        </pou:selectOneMenu>
+                    </pou:panelGrid>
+                </pou:panel>
+                <br/>
+                <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{validacionMovilidad.getvDiaTrabajo().rowCount == 0}"/>
+                <h:panelGroup rendered="#{validacionMovilidad.getvDiaTrabajo().rowCount > 0}">
+                    <pou:dataTable value="#{validacionMovilidad.getvDiaTrabajo()}"  var="item" 
+                                   widgetVar="diaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                   scrollable="true" scrollHeight="180"
+                                   selection="#{validacionMovilidad.selectedDiaTrabajos}" rowKey="#{item.diaTrabajoPK.idPersonal}"
+                                   style="width: 95%; margin-right: auto; padding-left: 3%">
+
+                        <pou:column selectionMode="multiple"   />  
+                        <pou:column filterBy="#{item.diaTrabajoPK.idPersonal}" style="width:130px" headerText="Personal" filterMatchMode="contains">
+                            <h:outputText value="#{item.diaTrabajoPK.idPersonal}"/>
+                        </pou:column>
+                        <pou:column  filterBy="#{item.diaTrabajoNombre}" style="width:130px" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiaTrabajoTitle_diaTrabajoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.diaTrabajoApellidoPaterno}" style="width:130px" filterMatchMode="contains">
+                            <f:facet name="header">
+                                <h:outputText value="APEL. Paterno"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diaTrabajoApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idHoraIngreso}" style="width:130px"  headerText="#{bundle.CreateDiaTrabajoTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.diaTrabajoSexo}"  style="width:130px" headerText="#{bundle.CreateDiaTrabajoTitle_diaTrabajoSexo}" filterMatchMode="contains">
+                            <h:outputText value="Varon" rendered="#{item.diaTrabajoSexo == true}" />
+                            <h:outputText value="Mujer" rendered="#{item.diaTrabajoSexo == false}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.idResponsable.responsableNombreApellido}"  style="width:130px"  headerText="#{bundle.CreateDiaTrabajoTitle_idResponsable}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idResponsable.responsableNombreApellido}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idDepartamento.departamentoNombre}"  style="width:130px" headerText="#{bundle.CreateDiaTrabajoTitle_idDepartamento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idDepartamento.departamentoNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idTransporteDiaTrabajo}"  style="width:130px" headerText="#{bundle.ListDiaTrabajoTitle_idTransporteDiaTrabajo}" filterMatchMode="startsWith" >
+                            <h:outputText value="#{item.idTransporteDiaTrabajo}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:panelGrid style="width: 95%;margin-left: auto; margin-right: auto;"  >
+                    <pou:row>
+                        <pou:column colspan="2" style="width: 50%">
+                            <pou:panel header="No asistio: ">
+                                <pou:panelGrid columns="6">
+                                    <pou:commandButton value="No Asistio"  update="@form" style="width: 120px;" actionListener="#{validacionMovilidad.validacionNegativa}" />
+                                    <h:outputText value="Motivo de Inasistencia :" style="width: 150px;"/>
+                                    <pou:selectOneMenu style="width: 130px;" value="#{validacionMovilidad.causaIncidencia}" >
+                                        <f:selectItems value="#{causaIncidenciaController.itemsAvailableSelectOne}"/>
+                                    </pou:selectOneMenu>
+                                </pou:panelGrid>
+                            </pou:panel>
+                        </pou:column >
+                        <pou:column colspan="2" style="width: 50%">
+                            <pou:panel   header="Asistio">
+                                <pou:panelGrid columns="6">
+                                    <pou:commandButton value="Asistio" update="@form" style="width: 120px;" actionListener="#{validacionMovilidad.validacionPositiva}" />
+                                    <h:outputText value="Ingreso:" style="width: 150px;"/>
+                                    <pou:calendar value="#{validacionMovilidad.horaReal}"   pattern="HH:mm" timeOnly="true" /> 
+                                    <h:outputText value="Vale:" style="width: 150px;"/>
+                                    <pou:inputText value="#{validacionMovilidad.nro_vale}" />
+                                </pou:panelGrid>
+                            </pou:panel>
+                        </pou:column>
+                    </pou:row>
+                </pou:panelGrid>
+                <br />
+
+                <h:panelGroup rendered="#{validacionMovilidad.getvTransporteDiaTrabajo().rowCount > 0}">
+
+                    <pou:dataTable value="#{validacionMovilidad.getvTransporteDiaTrabajo()}"  var="i" 
+                                   widgetVar="transporteDiaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                   rowKey="#{i.idTransporteDiaTrabajo}"
+                                   style="width: 95%;margin-right: auto; padding-left: 3%">
+                        <f:facet name="header"> Movilidades </f:facet>
+
+                        <pou:column style="width:130px" headerText="ID" >
+                            <h:outputText value="#{i.idTransporteDiaTrabajo}"/>
+                        </pou:column>
+                        <pou:column style="width:130px" headerText="#{bundle.CreateDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}" >
+                            <h:outputText value="#{i.transporteDiaTrabajoFecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column  style="width:130px"  headerText="Hora Ingreso" >
+                            <h:outputText value="#{i.idHoraIngreso}">
+
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column style="width:130px"  headerText="Sector">
+                            <h:outputText value="#{i.idSector.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column   style="width:130px" headerText="Costo total" >
+                            <h:outputText value="#{i.transporteDiaTrabajoCostoTotal}">
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column   style="width:130px"  headerText="Costo por Persona" >
+                            <h:outputText value="#{i.transporteDiaTrabajoCostoPorPersona}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="Editar"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{validacionMovilidad.prepareEdit}" value="Editar"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

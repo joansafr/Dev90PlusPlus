@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ezcomp="http://java.sun.com/jsf/composite/ezcomp"> 
+
+    <body>
+
+        <ui:composition template="/SIS/Transporte/template.xhtml">
+            
+            <ui:define name="title">
+                #{bundle.ListTransporteDiaTrabajoTitle}
+            </ui:define>
+
+            <ui:define name="top">
+
+            </ui:define>  
+
+            <ui:define name="left">
+            </ui:define>
+
+            <ui:define name="body">
+                <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                    <f:facet name="start">  
+                        <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                    </f:facet>  
+
+                    <f:facet name="complete">  
+                        <h:outputText value="" />  
+                    </f:facet>  
+                </pou:ajaxStatus>
+                <h:form id="holaa">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <pou:growl id="growl" />
+                    </h:panelGroup>
+                    <pou:panel style="width: 95%;margin-left: auto; margin-right: auto" header="Seleccione la fecha:">
+                        <pou:panelGrid columns="6"> 
+                            <h:outputText value="Fecha:" />
+                            <pou:calendar value="#{transporteDiaTrabajoController.fechaTransporte}"  id="popupCal" pattern="yyyy-MM-dd">
+                            </pou:calendar>  
+                            <pou:commandButton value="Listar"  update="@form" actionListener="#{transporteDiaTrabajoController.prepareList()}" />
+                        </pou:panelGrid>
+                    </pou:panel>
+                    <br />
+                    <h:outputText escape="false" value="#{bundle.ListTransporteDiaTrabajoEmpty}" rendered="#{transporteDiaTrabajoController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{transporteDiaTrabajoController.items.rowCount > 0}">
+                        <pou:dataTable value="#{transporteDiaTrabajoController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="OPCION"/>
+                                </f:facet>
+                                <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareView}" icon="ui-icon-disk"/><pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareEdit}" icon="ui-icon-pencil"/><pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.destroy}" icon="ui-icon-trash"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoCantidadPersonas}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoCantidadPersonas}"/>
+                            </pou:column>
+                        <!--    <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoPlaca}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoPlaca}"/>
+                            </pou:column> -->
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idTransporteDiaTrabajo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTransporteDiaTrabajo}"/>
+                            </pou:column>
+                          <!--  <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoObservaciones}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoObservaciones}"/>
+                            </pou:column> -->
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoFecha}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoFecha}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoTotal}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoCostoTotal}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoPorPersona}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.transporteDiaTrabajoCostoPorPersona}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idTiempoDemora}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTiempoDemora}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idProveedor}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idProveedor.proveedorNombreComercial}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idHoraIngreso}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idHoraIngreso}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idSector}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSector.sectorNombre}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idTipoVehiculo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoVehiculo.tipoVehiculoNombre}"/>
+                            </pou:column>
+                           <!-- <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idPadron}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPadron.padronNombre}"/>
+                            </pou:column>
+                            <pou:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListTransporteDiaTrabajoTitle_idCausaDemora}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idCausaDemora.causaDemoraNombre}"/>
+                            </pou:column> -->
+                        </pou:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <pou:commandButton ajax="false" action="#{transporteDiaTrabajoController.prepareCreate}" value="#{bundle.ListTransporteDiaTrabajoCreateLink}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

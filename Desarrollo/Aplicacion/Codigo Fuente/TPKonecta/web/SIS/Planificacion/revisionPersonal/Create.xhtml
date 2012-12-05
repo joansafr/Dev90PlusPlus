@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idPersonal}" for="idPersonal" />
+                    <pou:inputText id="idPersonal" value="#{personalController.selected.idPersonal}" title="#{bundle.CreatePersonalTitle_idPersonal}" required="true" requiredMessage="#{bundle.CreatePersonalRequiredMessage_idPersonal}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalCodigoPlanilla}" for="personalCodigoPlanilla" />
+                    <pou:inputText id="personalCodigoPlanilla" value="#{personalController.selected.personalCodigoPlanilla}" title="#{bundle.CreatePersonalTitle_personalCodigoPlanilla}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalCodigoFotocheck}" for="personalCodigoFotocheck" />
+                    <pou:inputText id="personalCodigoFotocheck" value="#{personalController.selected.personalCodigoFotocheck}" title="#{bundle.CreatePersonalTitle_personalCodigoFotocheck}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalNombre}" for="personalNombre" />
+                    <pou:inputText id="personalNombre" value="#{personalController.selected.personalNombre}" title="#{bundle.CreatePersonalTitle_personalNombre}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalApellidoPaterno}" for="personalApellidoPaterno" />
+                    <pou:inputText id="personalApellidoPaterno" value="#{personalController.selected.personalApellidoPaterno}" title="#{bundle.CreatePersonalTitle_personalApellidoPaterno}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalApellidoMaterno}" for="personalApellidoMaterno" />
+                    <pou:inputText id="personalApellidoMaterno" value="#{personalController.selected.personalApellidoMaterno}" title="#{bundle.CreatePersonalTitle_personalApellidoMaterno}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalUsuario}" for="personalUsuario" />
+                    <pou:inputText id="personalUsuario" value="#{personalController.selected.personalUsuario}" title="#{bundle.CreatePersonalTitle_personalUsuario}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalContrasena}" for="personalContrasena" />
+                    <pou:inputText id="personalContrasena" value="#{personalController.selected.personalContrasena}" title="#{bundle.CreatePersonalTitle_personalContrasena}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalCantidadHorasSemanal}" for="personalCantidadHorasSemanal" />
+                    <pou:spinner id="personalCantidadHorasSemanal" value="#{personalController.selected.personalCantidadHorasSemanal}" title="#{bundle.CreatePersonalTitle_personalCantidadHorasSemanal}" min="0" max="169"/> 
+                  
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaIncorporacion}" for="personalFechaIncorporacion" />
+                    <pou:calendar id="personalFechaIncorporacion" value="#{personalController.selected.personalFechaIncorporacion}" title="#{bundle.CreatePersonalTitle_personalFechaIncorporacion}" pattern="yyyy-MM-dd" />
+
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaBaja}" for="personalFechaBaja" />
+                    <pou:calendar id="personalFechaBaja" value="#{personalController.selected.personalFechaBaja}" title="#{bundle.CreatePersonalTitle_personalFechaBaja}" pattern="yyyy-MM-dd" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaFormacion}" for="personalFechaFormacion" />
+                    <pou:calendar id="personalFechaFormacion" value="#{personalController.selected.personalFechaFormacion}" title="#{bundle.CreatePersonalTitle_personalFechaFormacion}" pattern="yyyy-MM-dd" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaIngresoGestion}" for="personalFechaIngresoGestion" />
+                    <pou:calendar id="personalFechaIngresoGestion" value="#{personalController.selected.personalFechaIngresoGestion}" title="#{bundle.CreatePersonalTitle_personalFechaIngresoGestion}" pattern="yyyy-MM-dd" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaNacimiento}" for="personalFechaNacimiento" />
+                    <pou:calendar id="personalFechaNacimiento" value="#{personalController.selected.personalFechaNacimiento}" title="#{bundle.CreatePersonalTitle_personalFechaNacimiento}" pattern="yyyy-MM-dd" />
+
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalCantidadHijos}" for="personalCantidadHijos" />
+                    <pou:spinner id="personalCantidadHijos" value="#{personalController.selected.personalCantidadHijos}" title="#{bundle.CreatePersonalTitle_personalCantidadHijos}" min="0" max="169"/>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalDireccion}" for="personalDireccion" />
+                    <pou:inputText id="personalDireccion" value="#{personalController.selected.personalDireccion}" title="#{bundle.CreatePersonalTitle_personalDireccion}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalDireccionReferencia}" for="personalDireccionReferencia" />
+                    <pou:inputText id="personalDireccionReferencia" value="#{personalController.selected.personalDireccionReferencia}" title="#{bundle.CreatePersonalTitle_personalDireccionReferencia}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalTelefonoFijo}" for="personalTelefonoFijo" />
+                    <pou:inputText id="personalTelefonoFijo" value="#{personalController.selected.personalTelefonoFijo}" title="#{bundle.CreatePersonalTitle_personalTelefonoFijo}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalTelefonoMovil}" for="personalTelefonoMovil" />
+                    <pou:inputText id="personalTelefonoMovil" value="#{personalController.selected.personalTelefonoMovil}" title="#{bundle.CreatePersonalTitle_personalTelefonoMovil}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalEmail}" for="personalEmail" />
+                    <pou:inputText id="personalEmail" value="#{personalController.selected.personalEmail}" title="#{bundle.CreatePersonalTitle_personalEmail}" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalHoraRefrigerioInicio}" for="personalHoraRefrigerioInicio" />
+                    <pou:inputText id="personalHoraRefrigerioInicio" value="#{personalController.selected.personalHoraRefrigerioInicio}" title="#{bundle.CreatePersonalTitle_personalHoraRefrigerioInicio}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalHoraRefrigerioDuracion}" for="personalHoraRefrigerioDuracion" />
+                    <pou:inputText id="personalHoraRefrigerioDuracion" value="#{personalController.selected.personalHoraRefrigerioDuracion}" title="#{bundle.CreatePersonalTitle_personalHoraRefrigerioDuracion}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalCantidadDiasSemanal}" for="personalCantidadDiasSemanal" />
+                    <pou:spinner id="personalCantidadDiasSemanal" value="#{personalController.selected.personalCantidadDiasSemanal}" title="#{bundle.CreatePersonalTitle_personalCantidadDiasSemanal}" min="0" max="7"/>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalFechaVencimientoContrato}" for="personalFechaVencimientoContrato" />
+                    <pou:calendar id="personalFechaVencimientoContrato" value="#{personalController.selected.personalFechaVencimientoContrato}" title="#{bundle.CreatePersonalTitle_personalFechaVencimientoContrato}" pattern="yyyy-MM-dd" />
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idResponsable}" for="idResponsable" />
+                    <pou:selectOneMenu id="idResponsable" value="#{personalController.selected.idResponsable}" title="#{bundle.CreatePersonalTitle_idResponsable}" >
+                        <f:selectItems value="#{responsableController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idCentroEstudios}" for="idCentroEstudios" />
+                    <pou:selectOneMenu id="idCentroEstudios" value="#{personalController.selected.idCentroEstudios}" title="#{bundle.CreatePersonalTitle_idCentroEstudios}" >
+                        <f:selectItems value="#{centroEstudiosController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idCarrera}" for="idCarrera" />
+                    <pou:selectOneMenu id="idCarrera" value="#{personalController.selected.idCarrera}" title="#{bundle.CreatePersonalTitle_idCarrera}" >
+                        <f:selectItems value="#{carreraController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idNivelEducativo}" for="idNivelEducativo" />
+                    <pou:selectOneMenu id="idNivelEducativo" value="#{personalController.selected.idNivelEducativo}" title="#{bundle.CreatePersonalTitle_idNivelEducativo}" >
+                        <f:selectItems value="#{nivelEducativoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idEstadoCivil}" for="idEstadoCivil" />
+                    <pou:selectOneMenu id="idEstadoCivil" value="#{personalController.selected.idEstadoCivil}" title="#{bundle.CreatePersonalTitle_idEstadoCivil}" >
+                        <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idGrupoFormacion}" for="idGrupoFormacion" />
+                    <pou:selectOneMenu id="idGrupoFormacion" value="#{personalController.selected.idGrupoFormacion}" title="#{bundle.CreatePersonalTitle_idGrupoFormacion}" >
+                        <f:selectItems value="#{grupoFormacionController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idMotivoBaja}" for="idMotivoBaja" />
+                    <pou:selectOneMenu id="idMotivoBaja" value="#{personalController.selected.idMotivoBaja}" title="#{bundle.CreatePersonalTitle_idMotivoBaja}" >
+                        <f:selectItems value="#{motivoBajaController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idCargo}" for="idCargo" />
+                    <pou:selectOneMenu id="idCargo" value="#{personalController.selected.idCargo}" title="#{bundle.CreatePersonalTitle_idCargo}" >
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{personalController.selected.idHoraIngreso}" title="#{bundle.CreatePersonalTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idSector}" for="idSector" />
+                    <pou:selectOneMenu id="idSector" value="#{personalController.selected.idSector}" title="#{bundle.CreatePersonalTitle_idSector}" >
+                        <f:selectItems value="#{sectorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_idDepartamento}" for="idDepartamento" />
+                    <pou:selectOneMenu id="idDepartamento" value="#{personalController.selected.idDepartamento}" title="#{bundle.CreatePersonalTitle_idDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalSexo}" for="personalSexo" />
+                    <pou:selectOneRadio id="personalSexo" value="#{personalController.selected.personalSexo}" title="#{bundle.CreatePersonalTitle_personalSexo}" >  
+                        <f:selectItem itemLabel="Varon" itemValue="true" /><f:selectItem itemLabel="Mujer" itemValue="false" />  
+                    </pou:selectOneRadio>  
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalActividad}" for="personalActividad" />
+                    <pou:selectOneRadio id="personalActividad" value="#{personalController.selected.personalActividad}" title="#{bundle.CreatePersonalTitle_personalActividad}" >  
+                        <f:selectItem itemLabel="Si" itemValue="true" /><f:selectItem itemLabel="No" itemValue="false" />  
+                    </pou:selectOneRadio> 
+                    <h:outputLabel value="#{bundle.CreatePersonalLabel_personalConfianza}" for="personalConfianza" />                    
+                    <pou:selectOneRadio id="personalConfianza" value="#{personalController.selected.personalConfianza}" title="#{bundle.CreatePersonalTitle_personalConfianza}" >  
+                        <f:selectItem itemLabel="Si" itemValue="true" /><f:selectItem itemLabel="No" itemValue="false" />  
+                    </pou:selectOneRadio>  
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.create}" value="#{bundle.CreatePersonalSaveLink}" />
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="#{personalController.prepareList}" value="#{bundle.CreatePersonalShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

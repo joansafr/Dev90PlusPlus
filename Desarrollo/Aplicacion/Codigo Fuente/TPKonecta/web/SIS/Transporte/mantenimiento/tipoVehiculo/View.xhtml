@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoVehiculoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewTipoVehiculoLabel_tipoVehiculoNombre}"/>
+                    <h:outputText value="#{tipoVehiculoController.selected.tipoVehiculoNombre}" title="#{bundle.ViewTipoVehiculoTitle_tipoVehiculoNombre}"/>
+                    <h:outputText value="#{bundle.ViewTipoVehiculoLabel_tipoVehiculoCantidadPersonas}"/>
+                    <h:outputText value="#{tipoVehiculoController.selected.tipoVehiculoCantidadPersonas}" title="#{bundle.ViewTipoVehiculoTitle_tipoVehiculoCantidadPersonas}"/>
+                    <h:outputText value="#{bundle.ViewTipoVehiculoLabel_idTipoVehiculo}"/>
+                    <h:outputText value="#{tipoVehiculoController.selected.idTipoVehiculo}" title="#{bundle.ViewTipoVehiculoTitle_idTipoVehiculo}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{tipoVehiculoController.destroyAndView}" value="#{bundle.ViewTipoVehiculoDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewTipoVehiculoEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{tipoVehiculoController.prepareCreate}" value="#{bundle.ViewTipoVehiculoCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{tipoVehiculoController.prepareList}" value="#{bundle.ViewTipoVehiculoShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDiaTrabajoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoPK_diaTrabajoFecha}" for="diaTrabajoPK_diaTrabajoFecha" />
+                    <pou:inputText id="diaTrabajoPK_diaTrabajoFecha" value="#{diaTrabajoController.selected.diaTrabajoPK.diaTrabajoFecha}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoPK_diaTrabajoFecha}" required="true" requiredMessage="#{bundle.EditDiaTrabajoRequiredMessage_diaTrabajoPK_diaTrabajoFecha}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoHoraRefrigerio}" for="diaTrabajoHoraRefrigerio" />
+                    <pou:inputText id="diaTrabajoHoraRefrigerio" value="#{diaTrabajoController.selected.diaTrabajoHoraRefrigerio}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoHoraRefrigerio}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoCodigoPlanilla}" for="diaTrabajoCodigoPlanilla" />
+                    <pou:inputText id="diaTrabajoCodigoPlanilla" value="#{diaTrabajoController.selected.diaTrabajoCodigoPlanilla}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoCodigoPlanilla}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoCodigoFotocheck}" for="diaTrabajoCodigoFotocheck" />
+                    <pou:inputText id="diaTrabajoCodigoFotocheck" value="#{diaTrabajoController.selected.diaTrabajoCodigoFotocheck}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoCodigoFotocheck}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoCantidadHorasSemanal}" for="diaTrabajoCantidadHorasSemanal" />
+                    <pou:inputText id="diaTrabajoCantidadHorasSemanal" value="#{diaTrabajoController.selected.diaTrabajoCantidadHorasSemanal}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoCantidadHorasSemanal}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoFechaIncorporacion}" for="diaTrabajoFechaIncorporacion" />
+                    <pou:inputText id="diaTrabajoFechaIncorporacion" value="#{diaTrabajoController.selected.diaTrabajoFechaIncorporacion}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoFechaIncorporacion}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoFechaBaja}" for="diaTrabajoFechaBaja" />
+                    <pou:inputText id="diaTrabajoFechaBaja" value="#{diaTrabajoController.selected.diaTrabajoFechaBaja}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoFechaBaja}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoCantidadHijos}" for="diaTrabajoCantidadHijos" />
+                    <pou:inputText id="diaTrabajoCantidadHijos" value="#{diaTrabajoController.selected.diaTrabajoCantidadHijos}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoCantidadHijos}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoDireccion}" for="diaTrabajoDireccion" />
+                    <pou:inputText id="diaTrabajoDireccion" value="#{diaTrabajoController.selected.diaTrabajoDireccion}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoDireccion}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoDireccionReferencia}" for="diaTrabajoDireccionReferencia" />
+                    <pou:inputText id="diaTrabajoDireccionReferencia" value="#{diaTrabajoController.selected.diaTrabajoDireccionReferencia}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoDireccionReferencia}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoSexo}" for="diaTrabajoSexo" />
+                    <pou:inputText id="diaTrabajoSexo" value="#{diaTrabajoController.selected.diaTrabajoSexo}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoSexo}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoHoraIngresoReal}" for="diaTrabajoHoraIngresoReal" />
+                    <pou:inputText id="diaTrabajoHoraIngresoReal" value="#{diaTrabajoController.selected.diaTrabajoHoraIngresoReal}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoHoraIngresoReal}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </pou:inputText>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoNroVale}" for="diaTrabajoNroVale" />
+                    <pou:inputText id="diaTrabajoNroVale" value="#{diaTrabajoController.selected.diaTrabajoNroVale}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoNroVale}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoNombre}" for="diaTrabajoNombre" />
+                    <pou:inputText id="diaTrabajoNombre" value="#{diaTrabajoController.selected.diaTrabajoNombre}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoNombre}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoApellidoPaterno}" for="diaTrabajoApellidoPaterno" />
+                    <pou:inputText id="diaTrabajoApellidoPaterno" value="#{diaTrabajoController.selected.diaTrabajoApellidoPaterno}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoApellidoPaterno}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_diaTrabajoApellidoMaterno}" for="diaTrabajoApellidoMaterno" />
+                    <pou:inputText id="diaTrabajoApellidoMaterno" value="#{diaTrabajoController.selected.diaTrabajoApellidoMaterno}" title="#{bundle.EditDiaTrabajoTitle_diaTrabajoApellidoMaterno}" />
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idHoraIngreso}" for="idHoraIngreso" />
+                    <pou:selectOneMenu id="idHoraIngreso" value="#{diaTrabajoController.selected.idHoraIngreso}" title="#{bundle.EditDiaTrabajoTitle_idHoraIngreso}" >
+                        <f:selectItems value="#{horaIngresoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idResponsable}" for="idResponsable" />
+                    <pou:selectOneMenu id="idResponsable" value="#{diaTrabajoController.selected.idResponsable}" title="#{bundle.EditDiaTrabajoTitle_idResponsable}" >
+                        <f:selectItems value="#{responsableController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idSector}" for="idSector" />
+                    <pou:selectOneMenu id="idSector" value="#{diaTrabajoController.selected.idSector}" title="#{bundle.EditDiaTrabajoTitle_idSector}" >
+                        <f:selectItems value="#{sectorController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idCargo}" for="idCargo" />
+                    <pou:selectOneMenu id="idCargo" value="#{diaTrabajoController.selected.idCargo}" title="#{bundle.EditDiaTrabajoTitle_idCargo}" >
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idTransporteDiaTrabajo}" for="idTransporteDiaTrabajo" />
+                    <pou:selectOneMenu id="idTransporteDiaTrabajo" value="#{diaTrabajoController.selected.idTransporteDiaTrabajo}" title="#{bundle.EditDiaTrabajoTitle_idTransporteDiaTrabajo}" >
+                        <f:selectItems value="#{transporteDiaTrabajoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_personal}" for="personal" />
+                    <pou:selectOneMenu id="personal" value="#{diaTrabajoController.selected.personal}" title="#{bundle.EditDiaTrabajoTitle_personal}" required="true" requiredMessage="#{bundle.EditDiaTrabajoRequiredMessage_personal}">
+                        <f:selectItems value="#{personalController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idDiaTrabajoEstado}" for="idDiaTrabajoEstado" />
+                    <pou:selectOneMenu id="idDiaTrabajoEstado" value="#{diaTrabajoController.selected.idDiaTrabajoEstado}" title="#{bundle.EditDiaTrabajoTitle_idDiaTrabajoEstado}" >
+                        <f:selectItems value="#{diaTrabajoEstadoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idCausaIncidencia}" for="idCausaIncidencia" />
+                    <pou:selectOneMenu id="idCausaIncidencia" value="#{diaTrabajoController.selected.idCausaIncidencia}" title="#{bundle.EditDiaTrabajoTitle_idCausaIncidencia}" >
+                        <f:selectItems value="#{causaIncidenciaController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDiaTrabajoLabel_idDepartamento}" for="idDepartamento" />
+                    <pou:selectOneMenu id="idDepartamento" value="#{diaTrabajoController.selected.idDepartamento}" title="#{bundle.EditDiaTrabajoTitle_idDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.update}" value="#{bundle.EditDiaTrabajoSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditDiaTrabajoViewLink}" immediate="true"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{diaTrabajoController.prepareList}" value="#{bundle.EditDiaTrabajoShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

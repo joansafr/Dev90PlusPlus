@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSectorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewSectorLabel_idSector}"/>
+                    <h:outputText value="#{sectorController.selected.idSector}" title="#{bundle.ViewSectorTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewSectorLabel_sectorNombre}"/>
+                    <h:outputText value="#{sectorController.selected.sectorNombre}" title="#{bundle.ViewSectorTitle_sectorNombre}"/>
+                    <h:outputText value="#{bundle.ViewSectorLabel_sectorCosto}"/>
+                    <h:outputText value="#{sectorController.selected.sectorCosto}" title="#{bundle.ViewSectorTitle_sectorCosto}"/>
+                    <h:outputText value="#{bundle.ViewSectorLabel_idDistrito}"/>
+                    <h:outputText value="#{sectorController.selected.idDistrito.distritoNombre}" title="#{bundle.ViewSectorTitle_idDistrito}"/>
+                    <h:outputText value="#{bundle.ViewSectorLabel_idCono}"/>
+                    <h:outputText value="#{sectorController.selected.idCono.conoNombre}" title="#{bundle.ViewSectorTitle_idCono}"/>
+                    <h:outputText value="Vehiculo"/>
+                    <h:outputText value="#{sectorController.selected.idTipoVehiculo.tipoVehiculoNombre}" title="Vehiculo"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{sectorController.destroyAndView}" value="#{bundle.ViewSectorDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewSectorEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{sectorController.prepareCreate}" value="#{bundle.ViewSectorCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{sectorController.prepareList}" value="#{bundle.ViewSectorShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

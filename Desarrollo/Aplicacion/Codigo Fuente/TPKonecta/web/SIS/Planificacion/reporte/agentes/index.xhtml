@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="title">
+                K-Planificacion - Listado de Reportes
+            </ui:define>
+
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="body">
+                <h:form>
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <f:facet name="header">
+                            <pou:row>  
+                                <pou:column colspan="10">Cantidad de Agentes</pou:column>  
+                            </pou:row>
+                        </f:facet>
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_Departamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_Servicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_Segmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_Campana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Segun Campaña" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width:70%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_Responsable")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Responsable" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_HorarioIngreso")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Horario de Ingreso" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_HoraRefrigerio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Horario/Duracion de Refrigerio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_CondicionLaboral")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Condicion Laboral" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <pou:separator style="width:70%;height:10px;  margin-left: auto; margin-right: auto" />  
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_TurnoDepartamento")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Turno Segun Departamento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_TurnoServicio")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Servicio" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_TurnoSegmento")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Segmento" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("CantidadAgente_TurnoCampana")}'>  
+                                    <h:outputText style="font-weight: bold;"  value="Por Turno Segun Campana" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                    <br />
+                    <br />
+                    <pou:panelGrid style="width: 70%; margin-left: auto; margin-right: auto " >
+                        <f:facet name="header">
+                            <pou:row>  
+                                <pou:column colspan="10" >Agentes</pou:column>  
+                            </pou:row>
+                        </f:facet>
+                        <pou:row>   
+                            <pou:column style="width: 33%" >
+                                <pou:commandLink ajax="false" action='#{reportePlanificacion.ir("Agentes_Permanencia")}' >  
+                                    <h:outputText style="font-weight: bold;" value="Por Permanencia" />  
+                                </pou:commandLink>
+                            </pou:column>
+                            <pou:column style="width: 70%">Descripcion</pou:column> 
+                        </pou:row> 
+                    </pou:panelGrid>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

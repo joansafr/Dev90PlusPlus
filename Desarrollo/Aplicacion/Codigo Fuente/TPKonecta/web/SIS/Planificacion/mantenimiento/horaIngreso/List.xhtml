@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListHoraIngresoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListHoraIngresoEmpty}" rendered="#{horaIngresoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{horaIngresoController.items.rowCount > 0}">
+                    <<pou:dataTable value="#{horaIngresoController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListHoraIngresoTitle_idHoraIngreso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHoraIngreso}">
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{horaIngresoController.prepareView}" value="#{bundle.ListHoraIngresoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{horaIngresoController.prepareEdit}" value="#{bundle.ListHoraIngresoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{horaIngresoController.destroy}" value="#{bundle.ListHoraIngresoDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{horaIngresoController.prepareCreate}" value="#{bundle.ListHoraIngresoCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

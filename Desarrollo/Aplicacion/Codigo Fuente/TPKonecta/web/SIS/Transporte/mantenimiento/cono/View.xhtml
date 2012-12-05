@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewConoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewConoLabel_conoNombre}"/>
+                    <h:outputText value="#{conoController.selected.conoNombre}" title="#{bundle.ViewConoTitle_conoNombre}"/>
+                    <h:outputText value="#{bundle.ViewConoLabel_idCono}"/>
+                    <h:outputText value="#{conoController.selected.idCono}" title="#{bundle.ViewConoTitle_idCono}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{conoController.destroyAndView}" value="#{bundle.ViewConoDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewConoEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{conoController.prepareCreate}" value="#{bundle.ViewConoCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{conoController.prepareList}" value="#{bundle.ViewConoShowAllLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

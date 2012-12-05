@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Asignar Proveedor"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <pou:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="/resources/images/ajax-loader.gif" />  
+                </f:facet>  
+
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>  
+            </pou:ajaxStatus> 
+            <h:form>
+                <pou:panel style="width: 95%;margin-left: auto; margin-right: auto"  header="Seleccione la fecha:"> 
+                    <pou:panelGrid columns="6">  
+                        <h:outputText value="Fecha:" />
+                        <pou:calendar value="#{ transporteDiaTrabajoController.fecha}"  id="popupCal" pattern="yyyy-MM-dd">
+                        </pou:calendar>
+                        <pou:commandButton value="Listar"  actionListener="#{transporteDiaTrabajoController.prepareTransporteDiaTrabajo}"  update="@form" />
+                    </pou:panelGrid>
+                </pou:panel>
+                
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <br/>
+                <h:outputText escape="false" value="#{bundle.ListDiaTrabajoEmpty}" rendered="#{transporteDiaTrabajoController.getvTransporteDiaTrabajo().rowCount == 0}"/>
+                <h:panelGroup rendered="#{transporteDiaTrabajoController.getvTransporteDiaTrabajo().rowCount > 0}">
+
+                    <pou:dataTable value="#{transporteDiaTrabajoController.getvTransporteDiaTrabajo()}"  var="item" 
+                                   widgetVar="transporteDiaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                   selection="#{transporteDiaTrabajoController.selectedTransporteDiaTrabajo}" rowKey="#{item.idTransporteDiaTrabajo}"
+                                   
+                                   style="width: 95%;margin-right: auto; padding-left: 2%">
+
+                        <pou:column selectionMode="multiple" style="width:5px"  />  
+                        <pou:column filterBy="#{item.idTransporteDiaTrabajo}" style="width:130px" headerText="ID" filterMatchMode="contains">
+                            <h:outputText value="#{item.idTransporteDiaTrabajo}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.transporteDiaTrabajoFecha}" style="width:130px" headerText="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoFecha}" filterMatchMode="contains">
+                            <h:outputText value="#{item.transporteDiaTrabajoFecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idHoraIngreso}"  style="width:130px"  headerText="#{bundle.ListTransporteDiaTrabajoTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idHoraIngreso}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idSector}" style="width:130px"  headerText="#{bundle.ListTransporteDiaTrabajoTitle_idSector}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idSector.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.transporteDiaTrabajoCostoTotal}"  style="width:130px" headerText="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoTotal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.transporteDiaTrabajoCostoTotal}" />
+                        </pou:column>
+                        <pou:column filterBy="#{item.transporteDiaTrabajoCostoPorPersona}"  style="width:130px"  headerText="#{bundle.ListTransporteDiaTrabajoTitle_transporteDiaTrabajoCostoPorPersona}" filterMatchMode="contains">
+                            <h:outputText value="#{item.transporteDiaTrabajoCostoPorPersona}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                    <br />
+                    <pou:panel style="width: 95%;margin-left: auto; margin-right: auto" header="Seleccione un Proveedor:">
+                        <pou:panelGrid columns="6">  
+                            <h:outputText value="Proveedor:" />
+                            <pou:selectOneMenu value="#{transporteDiaTrabajoController.proveedor}" >
+                                <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                            </pou:selectOneMenu>
+                        </pou:panelGrid>
+                    </pou:panel>
+                    <br />
+                    <pou:commandButton value="Asignar" update="@form" actionListener="#{transporteDiaTrabajoController.generarAsignarProveedor(transporteDiaTrabajoController.fecha)}" />
+
+                </h:panelGroup>
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSectorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputLabel value="#{bundle.EditSectorLabel_sectorNombre}" for="sectorNombre" />
+                    <pou:inputText id="sectorNombre" value="#{sectorController.selected.sectorNombre}" title="#{bundle.EditSectorTitle_sectorNombre}" />
+                    <h:outputLabel value="#{bundle.EditSectorLabel_sectorCosto}" for="sectorCosto" />
+                    <pou:inputText id="sectorCosto" value="#{sectorController.selected.sectorCosto}" title="#{bundle.EditSectorTitle_sectorCosto}" required="true" requiredMessage="#{bundle.EditSectorRequiredMessage_sectorCosto}"/>
+                    <h:outputLabel value="#{bundle.EditSectorLabel_idDistrito}" for="idDistrito" />
+                    <pou:selectOneMenu id="idDistrito" value="#{sectorController.selected.idDistrito}" title="#{bundle.EditSectorTitle_idDistrito}" >
+                        <f:selectItems value="#{distritoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSectorLabel_idCono}" for="idCono" />
+                    <pou:selectOneMenu id="idCono" value="#{sectorController.selected.idCono}" title="#{bundle.EditSectorTitle_idCono}" >
+                        <f:selectItems value="#{conoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                    <h:outputLabel value="Vehiculo" for="idTipoVehiculo" />
+                    <pou:selectOneMenu id="idTipoVehiculo" value="#{sectorController.selected.idTipoVehiculo}" title="Vehiculo" >
+                        <f:selectItems value="#{tipoVehiculoController.itemsAvailableSelectOne}"/>
+                    </pou:selectOneMenu>
+                </pou:panelGrid>
+                <pou:commandButton ajax="false" action="#{sectorController.update}" value="#{bundle.EditSectorSaveLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="View" value="#{bundle.EditSectorViewLink}" immediate="true"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{sectorController.prepareList}" value="#{bundle.EditSectorShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui">
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Generar Día de Trabajo"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <pou:ajaxStatus  style="width:16px;height:16px;" id="ajaxStatusPanel">
+                <f:facet name="start">
+                    <pou:graphicImage value="/resources/images/ajax-loader.gif" />  
+                </f:facet>
+
+                <f:facet name="complete">
+                    <h:outputText value="" />
+                </f:facet>
+            </pou:ajaxStatus>
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <pou:panel style="width: 95%;margin-left: auto; margin-right: auto" header="Seleccione la fecha:"> 
+                    <pou:panelGrid columns="6" >  
+                        <pou:calendar value="#{personalController.fecha}"   id="popupCal" pattern="yyyy-MM-dd" >
+                        </pou:calendar>  
+                        <pou:commandButton value="Listar"  actionListener="#{personalController.prepareDiaTrabajo}"  update="@form" />
+                    </pou:panelGrid>
+                </pou:panel>
+                <br />
+                <h:outputText escape="false" value="#{bundle.ListPersonalEmpty}" rendered="#{personalController.getvPersonal().rowCount == 0}"/>
+                <h:panelGroup rendered="#{personalController.getvPersonal().rowCount > 0}">
+                    <pou:dataTable value="#{personalController.getvPersonal()}"  var="item" 
+                                   widgetVar="diaTrabajoTable" emptyMessage="No se encontró personal bajo este criterio."
+                                   selection="#{diaTrabajoController.selectedPersonal}" rowKey="#{item.idPersonal}"
+                                   scrollable="true" scrollHeight="415"
+                                   style="width: 95%;margin-right: auto; padding-left: 2%">
+                        
+                        <pou:column selectionMode="multiple"   />  
+                        <pou:column filterBy="#{item.idPersonal}" style="width:130px" headerText="#{bundle.ListPersonalTitle_idPersonal}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idPersonal}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalNombre}"  style="width:130px"  headerText="#{bundle.ListPersonalTitle_personalNombre}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalApellidoPaterno}" style="width:130px"  headerText="#{bundle.ListPersonalTitle_personalApellidoPaterno}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalApellidoPaterno}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.personalTelefonoMovil}" style="width:130px"  headerText="#{bundle.ListPersonalTitle_personalTelefonoMovil}" filterMatchMode="contains">
+                            <h:outputText value="#{item.personalTelefonoMovil}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idHoraIngreso}"  style="width:130px" headerText="#{bundle.ListPersonalTitle_idHoraIngreso}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idHoraIngreso}">
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idSector}"  style="width:130px" headerText="#{bundle.ListPersonalTitle_idSector}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idSector.sectorNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idEstadoCivil}"  style="width:130px"  headerText="#{bundle.ListPersonalTitle_idEstadoCivil}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idEstadoCivil.estadoCivilNombre}"/>
+                        </pou:column>
+                        <pou:column filterBy="#{item.idDepartamento}"  style="width:130px" headerText="#{bundle.ListPersonalTitle_idDepartamento}" filterMatchMode="contains">
+                            <h:outputText value="#{item.idDepartamento.departamentoNombre}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                    <pou:commandButton  value="Generar día: #{personalController.fecha.toLocaleString()}" update="@form" actionListener="#{diaTrabajoController.generarDiaTrabajo(personalController.fecha)}" />
+                </h:panelGroup>
+                <br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="/SIS/Transporte/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPersonalDiaDescansoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <pou:growl id="growl" />
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPersonalDiaDescansoEmpty}" rendered="#{personalDiaDescansoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{personalDiaDescansoController.items.rowCount > 0}">
+                    <pou:dataTable value="#{personalDiaDescansoController.items}" var="item" style="width: 95%;margin-right: auto; padding-left: 2%">
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalDiaDescansoTitle_personalDiaDescansoPK_personalDiaDescansoFecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personalDiaDescansoPK.personalDiaDescansoFecha}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonalDiaDescansoTitle_personal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personal}"/>
+                        </pou:column>
+                        <pou:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareView}" value="#{bundle.ListPersonalDiaDescansoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareEdit}" value="#{bundle.ListPersonalDiaDescansoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <pou:commandButton ajax="false" action="#{personalDiaDescansoController.destroy}" value="#{bundle.ListPersonalDiaDescansoDestroyLink}"/>
+                        </pou:column>
+                    </pou:dataTable>
+                </h:panelGroup>
+                <br />
+                <pou:commandButton ajax="false" action="#{personalDiaDescansoController.prepareCreate}" value="#{bundle.ListPersonalDiaDescansoCreateLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

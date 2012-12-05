@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>
+
+        <a tabindex="0" href="#news-items-2" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="hierarchybreadcrumb">
+            <span class="ui-icon ui-icon-triangle-1-s"></span>Navegacion</a>
+        <div id="news-items-2" class="hidden">
+            <ul>
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/revisionPersonal/List.xhtml" >Revision: Personal</a></li>
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/personalDiaDescanso/List.xhtml" >Revision: Descansos</a></li>                        
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/vistaAdminArea/vistaAdminArea.xhtml" >Vista: Admin</a></li>
+                <li><a href="/TPKonecta/faces/SIS/Planificacion/vistaUsuarioArea/vistaUsuarioArea.xhtml" >Vista: Usuario</a></li>
+                <li><a href="#" >Reportes</a></li>
+            </ul>
+        </div>
+    </cc:implementation>
+</html>

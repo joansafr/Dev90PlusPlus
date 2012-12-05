@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core" xmlns:pou="http://primefaces.org/ui"> 
+
+    <ui:composition template="./../../template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDepartamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <pou:growl id="growl" />
+            </h:panelGroup>
+            <h:form>
+                <pou:panelGrid columns="6" style="width: 90%;margin-left: auto; margin-right: auto">
+                    <h:outputText value="#{bundle.ViewDepartamentoLabel_departamentoNombre}"/>
+                    <h:outputText value="#{departamentoController.selected.departamentoNombre}" title="#{bundle.ViewDepartamentoTitle_departamentoNombre}"/>
+                    <h:outputText value="#{bundle.ViewDepartamentoLabel_idDepartamento}"/>
+                    <h:outputText value="#{departamentoController.selected.idDepartamento}" title="#{bundle.ViewDepartamentoTitle_idDepartamento}"/>
+                    <h:outputText value="#{bundle.ViewDepartamentoLabel_idServicio}"/>
+                    <h:outputText value="#{departamentoController.selected.idServicio}" title="#{bundle.ViewDepartamentoTitle_idServicio}"/>
+                </pou:panelGrid>
+                <br />
+                <pou:commandButton ajax="false" action="#{departamentoController.destroyAndView}" value="#{bundle.ViewDepartamentoDestroyLink}"/>
+                <br />
+                <br />
+                <pou:commandButton ajax="false" action="Edit" value="#{bundle.ViewDepartamentoEditLink}"/>
+                <br />
+                <pou:commandButton ajax="false" action="#{departamentoController.prepareCreate}" value="#{bundle.ViewDepartamentoCreateLink}" />
+                <br />
+                <pou:commandButton ajax="false" action="#{departamentoController.prepareList}" value="#{bundle.ViewDepartamentoShowAllLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
